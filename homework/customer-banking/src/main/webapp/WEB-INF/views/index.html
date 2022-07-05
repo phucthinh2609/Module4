@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .table-title{
+            background: #299be4;
+            color: #fff;
+            padding: 16px 30px;
+            border-radius: 3px 3px 0 0;
+        }
+
+        thead {
+            background: #4caf50;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1>List of customers</h1>
+            </div>
+            <div class="col-sm-5">
+                <a href="#" class="btn btn-outline-light">
+                    <i class="fa fa-history" aria-hidden="true"></i>
+                    <span>Transfer money Information</span>
+                </a>
+                <a href="#" class="btn btn-outline-light">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                    <span>Add New Customer</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>FullName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Balance</th>
+            <th colspan="5">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Elizabeth Tyler</td>
+            <td>moqo@mailinator.com</td>
+            <td>+1 (754) 299-6156</td>
+            <td>Dignissimos quaerat</td>
+            <td>0</td>
+            <td>
+                <a href="#" class="btn btn-outline-secondary"><i class="fa-solid fa-pen-to-square"></i></a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-outline-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-outline-warning"><i class="fa fa-minus" aria-hidden="true"></i></a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-outline-primary"><i class="fa fa-exchange" aria-hidden="true"></i></a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-outline-danger"><i class="fa fa-ban" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

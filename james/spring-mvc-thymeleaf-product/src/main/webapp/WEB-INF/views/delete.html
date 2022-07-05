@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head"></head>
+<body>
+    <div class="container">
+        <h1 class="mb-2">Delete Product</h1>
+        <div class="row mb-5">
+            <div class="col-sm-3">
+                <a th:href="@{/products}">
+                    <button class="btn btn-success"><i class="fa-solid fa-arrow-left"></i> Back to product list</button>
+                </a>
+            </div>
+        </div>
+        <form  th:action="@{/products/delete}" th:method="post" th:object="${product}" novalidate="novalidate">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-4">
+                <label class="form-label">Name</label>
+                <input class="form-control" type="text" th:field="*{name}" disabled>
+            </div>
+            <div class="mb-4" >
+                <label class="form-label">Price</label>
+                <input class="form-control" type="number" th:field="*{price}" disabled>
+            </div>
+            <div class="mb-4" >
+                <label class="form-label">Quantity</label>
+                <input class="form-control" type="number" th:field="*{quantity}" disabled>
+            </div>
+            <div class="mb-4" >
+                <label class="form-label">Color</label>
+                <input class="form-control" type="text" th:field="*{color}" disabled>
+            </div>
+            <div class="mb-5">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script th:replace="/layout::script"></script>
+</body>
+</html>
