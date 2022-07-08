@@ -1,0 +1,8 @@
+com/cg/model/Withdraw.class
+com/cg/controller/CustomerController.class
+com/cg/model/Deposit.class
+com/cg/config/AppInit.class
+com/cg/config/AppConfig.class
+com/cg/model/Transfer.class
+com/cg/model/BaseEntities.class
+com/cg/model/Customer.class

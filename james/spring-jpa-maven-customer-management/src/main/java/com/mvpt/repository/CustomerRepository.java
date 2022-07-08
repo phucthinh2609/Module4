@@ -22,29 +22,28 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public Customer findById(Long id) {
-        TypedQuery<Customer> query = em.createQuery("select c from Customer c where  c.id=:id", Customer.class);
-        query.setParameter("id", id);
+        TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.id = :id", Customer.class)
+                .setParameter("id", id);
         try {
             return query.getSingleResult();
-        } catch (NoResultException e) {
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
             return null;
         }
     }
 
     @Override
     public void save(Customer customer) {
-        if (customer.getId() != null) {
+        if (customer.getId() != null)
             em.merge(customer);
-        } else {
+        else
             em.persist(customer);
-        }
     }
 
     @Override
     public void remove(Long id) {
         Customer customer = findById(id);
-        if (customer != null) {
+        if (customer != null)
             em.remove(customer);
-        }
     }
 }
