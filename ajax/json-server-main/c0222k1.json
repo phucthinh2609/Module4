@@ -1,0 +1,1182 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "fullName": "NVA",
+      "email": "nva@gmail.com",
+      "phone": "012345",
+      "address": "28 NTP",
+      "balance": "0",
+      "deleted": "1"
+    },
+    {
+      "id": 2,
+      "fullName": "Xena Velazquez",
+      "email": "ceqizur@mailinator.com",
+      "phone": "+1 (129) 651-1664",
+      "address": "Quae tempora veniam",
+      "balance": "0",
+      "deleted": "1"
+    },
+    {
+      "fullName": "Dale Frazier",
+      "email": "hosoca@mailinator.com",
+      "phone": "+1 (506) 199-7367",
+      "address": "Cupiditate tenetur m",
+      "balance": "0",
+      "deleted": "1",
+      "id": 3
+    },
+    {
+      "fullName": "August Mercado",
+      "email": "sofexyhyke@mailinator.com",
+      "phone": "+1 (599) 449-8201",
+      "address": "sss",
+      "balance": "177",
+      "deleted": "1",
+      "id": 4
+    },
+    {
+      "fullName": "Jana Lowery",
+      "email": "tyjobegu@mailinator.com",
+      "phone": "+1 (805) 805-5843",
+      "address": "Aut ea perferendis a",
+      "balance": "0",
+      "deleted": "1",
+      "id": 5
+    },
+    {
+      "fullName": "Curran Ward",
+      "email": "gazoba@mailinator.com",
+      "phone": "+1 (641) 472-3728",
+      "address": "Necessitatibus sed r",
+      "balance": "20",
+      "deleted": "0",
+      "id": 6
+    },
+    {
+      "fullName": "Xavier Buckner",
+      "email": "bideri@mailinator.com",
+      "phone": "+1 (165) 471-5261",
+      "address": "Sed qui sed dolorum ",
+      "balance": "0",
+      "deleted": "1",
+      "id": 7
+    },
+    {
+      "fullName": "Felicia Pennington",
+      "email": "qyjibe@mailinator.com",
+      "phone": "+1 (693) 139-7933",
+      "address": "Ullam velit eius co",
+      "balance": "0",
+      "deleted": "1",
+      "id": 8
+    },
+    {
+      "fullName": "Quinlan Woods",
+      "email": "potejabag@mailinator.com",
+      "phone": "+1 (304) 508-5654",
+      "address": "Quis magni quia veli",
+      "balance": "0",
+      "deleted": "1",
+      "id": 9
+    },
+    {
+      "fullName": "August Mercado",
+      "email": "sofexyhyke@mailinator.com",
+      "phone": "+1 (599) 449-8201",
+      "address": "In quis aliquid moll",
+      "balance": "379",
+      "deleted": "0",
+      "id": 10
+    },
+    {
+      "fullName": "Keely Curry",
+      "email": "biqeni@mailinator.com",
+      "address": "Reprehenderit volupt",
+      "balance": "58",
+      "deleted": "0",
+      "id": 11,
+      "phone": "+1 (816) 226-2946"
+    },
+    {
+      "fullName": "August Mercado",
+      "email": "sofexyhyke@mailinator.com",
+      "phone": "+1 (599) 449-8201",
+      "address": "In quis aliquid moll",
+      "balance": "104",
+      "deleted": "0",
+      "id": 12
+    },
+    {
+      "fullName": "Yael Armstrong",
+      "email": "xuqewymev@mailinator.com",
+      "phone": "+1 (834) 965-2087",
+      "address": "Enim ut ea saepe lab",
+      "balance": "0",
+      "deleted": "0",
+      "id": 13
+    },
+    {
+      "fullName": "Ursula Barker",
+      "email": "dedi@mailinator.com",
+      "phone": "+1 (967) 718-7747",
+      "address": "Dolores est optio c",
+      "balance": "0",
+      "deleted": "1",
+      "id": 14
+    },
+    {
+      "fullName": "Ursula Barker",
+      "email": "dedi@mailinator.com",
+      "phone": "+1 (967) 718-7747",
+      "address": "Dolores est optio c",
+      "balance": "0",
+      "deleted": "0",
+      "id": 15
+    },
+    {
+      "fullName": "Jessamine Emerson",
+      "email": "xuzolum@mailinator.com",
+      "phone": "+1 (699) 601-8151",
+      "address": "Labore laborum susci",
+      "balance": "0",
+      "deleted": "0",
+      "id": 16
+    },
+    {
+      "fullName": "Keaton Wade",
+      "email": "bezutaqir@mailinator.com",
+      "phone": "+1 (695) 205-3657",
+      "address": "Adipisci sed unde nu",
+      "balance": "0",
+      "deleted": "0",
+      "id": 17
+    },
+    {
+      "fullName": "Arthur Sampson",
+      "email": "sexyrotevi@mailinator.com",
+      "phone": "+1 (538) 354-8627",
+      "address": "Repellendus Officia",
+      "balance": "0",
+      "deleted": "0",
+      "id": 18
+    },
+    {
+      "fullName": "Wilma Conner",
+      "email": "jubycysyq@mailinator.com",
+      "phone": "+1 (602) 525-8537",
+      "address": "Aliquip non doloremq",
+      "balance": "0",
+      "deleted": "0",
+      "id": 19
+    },
+    {
+      "fullName": "Nomlanga Chavez",
+      "email": "neluveg@mailinator.com",
+      "phone": "+1 (253) 279-9797",
+      "address": "Magna et obcaecati i",
+      "balance": "0",
+      "deleted": "1",
+      "id": 20
+    },
+    {
+      "fullName": "Odette Klein",
+      "email": "wiwufez@mailinator.com",
+      "phone": "+1 (837) 651-3887",
+      "address": "Nihil consequat Eos",
+      "balance": "0",
+      "deleted": "1",
+      "id": 21
+    },
+    {
+      "fullName": "Thor Smith",
+      "email": "xehutabyn@mailinator.com",
+      "phone": "+1 (415) 933-9328",
+      "address": "Enim sed ea quaerat ",
+      "balance": "0",
+      "deleted": "0",
+      "id": 22
+    },
+    {
+      "fullName": "Justin Potts",
+      "email": "mojunog@mailinator.com",
+      "phone": "+1 (408) 831-6282",
+      "address": "Ipsam aliquid sapien",
+      "balance": "10",
+      "deleted": "0",
+      "id": 23
+    },
+    {
+      "fullName": "Oprah Floyd",
+      "email": "luwehusos@mailinator.com",
+      "phone": "+1 (676) 796-3771",
+      "address": "Sed repudiandae dele",
+      "balance": "10",
+      "deleted": "0",
+      "id": 24
+    },
+    {
+      "fullName": "Lane Kirkland",
+      "email": "zito@mailinator.com",
+      "phone": "+1 (266) 915-7204",
+      "address": "Sint nulla nulla Na",
+      "balance": "210",
+      "deleted": "0",
+      "id": 25
+    },
+    {
+      "fullName": "Talon Foster",
+      "email": "wafima@mailinator.com",
+      "phone": "+1 (766) 455-1619",
+      "address": "Nemo ea sunt exercit",
+      "balance": "0",
+      "deleted": "0",
+      "id": 26
+    },
+    {
+      "fullName": "Florence Banks",
+      "email": "kipo@mailinator.com",
+      "phone": "+1 (905) 283-4234",
+      "address": "Aliqua Dolore nemo ",
+      "balance": "0",
+      "deleted": "0",
+      "id": 27
+    },
+    {
+      "fullName": "Kaden Fisher",
+      "email": "caxuder@mailinator.com",
+      "phone": "+1 (914) 873-3686",
+      "address": "Dolor sed deserunt p",
+      "balance": "0",
+      "deleted": "0",
+      "id": 28
+    },
+    {
+      "fullName": "Gareth Leonard",
+      "email": "qeco@mailinator.com",
+      "phone": "+1 (987) 934-2075",
+      "address": "Commodo excepturi no",
+      "balance": "0",
+      "deleted": "0",
+      "id": 29
+    }
+  ],
+  "deposits": [
+    {
+      "customerId": "10",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 1
+    },
+    {
+      "customerId": "10",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 2
+    },
+    {
+      "customerId": "",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 3
+    },
+    {
+      "customerId": "",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 4
+    },
+    {
+      "customerId": "",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 5
+    },
+    {
+      "customerId": "",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 6
+    },
+    {
+      "customerId": "",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 7
+    },
+    {
+      "customerId": "",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 8
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "20",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 9
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "20",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 10
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 11
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 12
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "12",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 13
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "12",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 14
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "12",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 15
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "12",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 16
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "12",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 17
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "12",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 18
+    },
+    {
+      "customerId": "10",
+      "transactionAmount": "13",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 19
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "20",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 20
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "20",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 21
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "5",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 22
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "1",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 23
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "1",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12",
+      "id": 24
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "200",
+      "createdAt": "2022-7-13",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-13",
+      "id": 25
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "200",
+      "createdAt": "2022-7-13",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-13",
+      "id": 26
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "9790",
+      "createdAt": "2022-7-13",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-13",
+      "id": 27
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "1000",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 28
+    },
+    {
+      "customerId": "10",
+      "transactionAmount": "900",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 29
+    },
+    {
+      "customerId": "10",
+      "transactionAmount": "90",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 30
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "8",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 31
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "8",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 32
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "3",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 33
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "8",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 34
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "8",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 35
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "8",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 36
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "8",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 37
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "53",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 38
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 39
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "50",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 40
+    },
+    {
+      "customerId": "4",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 41
+    },
+    {
+      "customerId": "10",
+      "transactionAmount": "1000",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14",
+      "id": 42
+    }
+  ],
+  "withdraws": [
+    {
+      "id": 1,
+      "customerId": "4",
+      "transactionAmount": "20",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12"
+    },
+    {
+      "id": 2,
+      "customerId": "10",
+      "transactionAmount": "3",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12"
+    },
+    {
+      "id": 3,
+      "customerId": "4",
+      "transactionAmount": "20",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12"
+    },
+    {
+      "id": 4,
+      "customerId": "6",
+      "transactionAmount": "21",
+      "createdAt": "2022-7-12",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-12"
+    },
+    {
+      "id": 5,
+      "customerId": "4",
+      "transactionAmount": "10000",
+      "createdAt": "2022-7-13",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-13"
+    },
+    {
+      "id": 6,
+      "customerId": "6",
+      "transactionAmount": "10",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 7,
+      "customerId": "6",
+      "transactionAmount": "10",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 8,
+      "customerId": "6",
+      "transactionAmount": "",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 9,
+      "customerId": "10",
+      "transactionAmount": "",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 10,
+      "customerId": "4",
+      "transactionAmount": "222",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 11,
+      "customerId": "10",
+      "transactionAmount": "60",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 12,
+      "customerId": "10",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 13,
+      "customerId": "10",
+      "transactionAmount": "50",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 14,
+      "customerId": "10",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 15,
+      "customerId": "10",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 16,
+      "customerId": "10",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 17,
+      "customerId": "10",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 18,
+      "customerId": "10",
+      "transactionAmount": "109",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 19,
+      "customerId": "10",
+      "transactionAmount": "89",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 20,
+      "customerId": "10",
+      "transactionAmount": "80",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 21,
+      "customerId": "10",
+      "transactionAmount": "70",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 22,
+      "customerId": "10",
+      "transactionAmount": "60",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 23,
+      "customerId": "10",
+      "transactionAmount": "60",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 24,
+      "customerId": "10",
+      "transactionAmount": "99",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    },
+    {
+      "id": 25,
+      "customerId": "10",
+      "transactionAmount": "99",
+      "createdAt": "2022-7-14",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-14"
+    }
+  ],
+  "transfers": [
+    {
+      "transferAmount": "100",
+      "senderId": "",
+      "recipientId": "4",
+      "id": 1
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "",
+      "recipientId": "4",
+      "id": 2
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "",
+      "recipientId": "4",
+      "id": 3
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "",
+      "recipientId": "4",
+      "id": 4
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "",
+      "recipientId": "4",
+      "id": 5
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 6
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 7
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "10",
+      "recipientId": "4",
+      "id": 8
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 9
+    },
+    {
+      "transferAmount": "100",
+      "senderId": "4",
+      "recipientId": "6",
+      "id": 10
+    },
+    {
+      "transferAmount": "50",
+      "senderId": "4",
+      "recipientId": "6",
+      "id": 11
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "4",
+      "recipientId": "6",
+      "id": 12
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "4",
+      "recipientId": "12",
+      "id": 13
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "4",
+      "recipientId": "12",
+      "id": 14
+    },
+    {
+      "transferAmount": "50",
+      "senderId": "4",
+      "recipientId": "10",
+      "id": 15
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "11",
+      "id": 16
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "11",
+      "id": 17
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "11",
+      "id": 18
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 19
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 20
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 21
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "6",
+      "recipientId": "4",
+      "id": 22
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "10",
+      "recipientId": "4",
+      "id": 23
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "10",
+      "recipientId": "4",
+      "id": 24
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "10",
+      "recipientId": "4",
+      "id": 25
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "11",
+      "recipientId": "4",
+      "id": 26
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "11",
+      "recipientId": "4",
+      "id": 27
+    },
+    {
+      "transferAmount": "10",
+      "senderId": "4",
+      "recipientId": "6",
+      "id": 28
+    },
+    {
+      "transferAmount": "50",
+      "senderId": "10",
+      "recipientId": "11",
+      "id": 29
+    }
+  ]
+}

@@ -71,21 +71,21 @@
             </div>
         </div>
         <div>
-            <form method="post" th:object="${customer}">
+            <form method="post" th:object="${sender}">
                 <div class="row g-3">
                     <div class="col-sm-3">
                         <div class="form-group row mb-4">
                             <label class="col-sm-12 col-form-label">Sender ID</label>
                             <div class="col-sm-12">
-                                <input type="number" class="form-control" th:value="${id}" name="sender.id" readonly>
+                                <input type="number" class="form-control" th:value="${id}" name="sender" readonly>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-sm-12 col-form-label">Recipient Name</label>
                             <div class="col-sm-12">
-                                <select id="recipient_id" class="form-select valid" name="recipient.id" aria-invalid="false">
+                                <select id="recipient_id" class="form-select valid" name="recipient" aria-invalid="false">
                                     <th:block  th:each="c : ${customers}">
-                                        <option th:value="${c.id}" th:text="${c.fullName}"></option>
+                                        <option th:value="${c.id}" th:text="'(' + ${c.id} + ') - ' + ${c.fullName}"></option>
                                     </th:block>
                                 </select>
                             </div>
@@ -99,9 +99,9 @@
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label class="col-sm-12 col-form-label">Transaction Amount ($)</label>
+                            <label class="col-sm-12 col-form-label">Transfer Amount ($)</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" th:field="${transfer.transactionAmount}" id="transactionAmount" onchange="myFunction()">
+                                <input type="text" class="form-control" th:field="${transfer.transferAmount}" id="transactionAmount" oninput="myFunction()">
                             </div>
                         </div>
                     </div>
@@ -173,10 +173,23 @@
 <script>
     function myFunction(){
         let transactionAmount = document.getElementById("transactionAmount").value;
-        let fees = document.getElementById("fees").value;
-        let feesAmount = (transactionAmount * fees) / 100;
-        let totalAmountOfTransaction = Number(transactionAmount) + Number(feesAmount);
+        let fees = 0;
+        let feesAmount = 0;
+        let totalAmountOfTransaction = 0;
+
+        fees = document.getElementById("fees").value;
+        feesAmount = (transactionAmount * fees) / 100;
+        totalAmountOfTransaction = Number(transactionAmount) + Number(feesAmount);
         document.getElementById("totalAmountId").value = totalAmountOfTransaction;
+
+        // if (!isNaN(transactionAmount)) {
+        //     document.getElementById("transactionAmount").value = "";
+        // } else {
+        //     fees = document.getElementById("fees").value;
+        //     feesAmount = (transactionAmount * fees) / 100;
+        //     totalAmountOfTransaction = Number(transactionAmount) + Number(feesAmount);
+        //     document.getElementById("totalAmountId").value = totalAmountOfTransaction;
+        // }
     }
 </script>
 </body>

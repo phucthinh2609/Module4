@@ -27,7 +27,7 @@ public class CustomerController {
     @GetMapping
     public ModelAndView list(){
         ModelAndView modelAndView = new ModelAndView("/index");
-        List<Customer> customers = customerService.findAll();
+        List<Customer> customers = customerService.findAllByDeletedFalse();
         modelAndView.addObject("customers", customers);
 
         return modelAndView;
@@ -89,22 +89,29 @@ public class CustomerController {
     @GetMapping("/transfer/{id}")
     public ModelAndView showTransferPage(@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("/transfer");
-        Optional<Customer> customer = customerService.findById(id);
-        List<Customer> customers = customerService.findAll();
+        Optional<Customer> sender = customerService.findById(id);
+        List<Customer> customers = customerService.findAllByIdNot(id);
 
-        if (customer.isPresent()){
-            modelAndView.addObject("customer", customer.get());
+        if (sender.isPresent()){
+            modelAndView.addObject("sender", sender.get());
             modelAndView.addObject("customers", customers);
         }else {
-            modelAndView.addObject("customer", new Customer());
+            modelAndView.addObject("sender", new Customer());
         }
 
         Transfer transfer = new Transfer();
-        transfer.setSender(customer.get());
+        transfer.setSender(sender.get());
         transfer.setFees(10);
         modelAndView.addObject("transfer", transfer);
 
         return modelAndView;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delele(@PathVariable Long id){
+        customerService.remove(id);
+
+        return "redirect:/customers";
     }
 
     @PostMapping("/create")
@@ -173,10 +180,8 @@ public class CustomerController {
     }
 
     @PostMapping("/withdraw/{id}")
-    public ModelAndView withdraw(@PathVariable Long id,@ModelAttribute Customer customer, @ModelAttribute Withdraw withdraw){
+    public ModelAndView withdraw(@PathVariable Long id, @ModelAttribute Withdraw withdraw){
         ModelAndView modelAndView = new ModelAndView("/withdraw");
-        System.out.println(customer);
-        System.out.println(withdraw);
         Optional<Customer> customerOptional = customerService.findById(id);
 
         if (customerOptional.isPresent()){
@@ -201,30 +206,53 @@ public class CustomerController {
         return modelAndView;
     }
 
-    @PostMapping("/transfer/{id}")
-    public ModelAndView transfer(@PathVariable Long id, @ModelAttribute Transfer transfer){
+    @PostMapping("/transfer/{senderId}")
+    public ModelAndView transfer(@PathVariable Long senderId, @ModelAttribute Transfer transfer){
         ModelAndView modelAndView = new ModelAndView("/transfer");
 
-//        Optional<Customer> customerOptional = customerService.findById(id);
+        Optional<Customer> senderOptional = customerService.findById(senderId);
+        BigDecimal currentBalance = senderOptional.get().getBalance();
 
-//        if (customerOptional.isPresent()){
-//            try {
-//                customerService.withdraw(customerOptional.get(), withdraw);
-//
-//                modelAndView.addObject("success", "Withdraw successful");
-//                modelAndView.addObject("customer", customerService.findById(id));
-//
-//            } catch (Exception ex) {
-//                ex.printStackTrace();
-//                modelAndView.addObject("error", "Bad data");
-//            }
-//
-//        } else {
-//            modelAndView.addObject("error", "Id invalid");
-//            modelAndView.addObject("customer", new Customer());
-//        }
-//
-//        modelAndView.addObject("withdraw", new Withdraw());
+        if (senderOptional.isPresent()){
+            Optional<Customer> recipientOptional = customerService.findById(transfer.getRecipient().getId());
+
+            if (recipientOptional.isPresent()){
+                if (!senderOptional.get().getId().equals(recipientOptional.get().getId())) {
+                    long fees = transfer.getFees();
+                    BigDecimal transferAmount = transfer.getTransferAmount();
+                    BigDecimal feesAmount = transferAmount.multiply(BigDecimal.valueOf(fees)).divide(BigDecimal.valueOf(100));
+                    BigDecimal transactionAmount = feesAmount.add(transferAmount);
+
+                    if (currentBalance.compareTo(transactionAmount) >=0){
+                        transfer.setFees(fees);
+                        transfer.setFeesAmount(feesAmount);
+                        transfer.setTransferAmount(transferAmount);
+                        transfer.setTransactionAmount(transactionAmount);
+                        transfer.setSender(senderOptional.get());
+                        transfer.setRecipient(recipientOptional.get());
+
+                        customerService.transfer(transfer);
+
+                        modelAndView.addObject("sender", customerService.findById(senderId));
+                    }
+
+                } else {
+                    modelAndView.addObject("error", "Recipient id required different with Sender id");
+                    modelAndView.addObject("sender", new Customer());
+                }
+
+            }else{
+                modelAndView.addObject("error", "Recipient id invalid");
+                modelAndView.addObject("sender", new Customer());
+            }
+
+        } else {
+            modelAndView.addObject("error", "Sender id invalid");
+            modelAndView.addObject("sender", new Customer());
+        }
+
+        modelAndView.addObject("customers", customerService.findAllByIdNot(senderId));
+        modelAndView.addObject("transfer", new Transfer());
 
         return modelAndView;
     }
