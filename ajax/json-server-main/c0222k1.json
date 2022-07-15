@@ -50,7 +50,7 @@
       "email": "gazoba@mailinator.com",
       "phone": "+1 (641) 472-3728",
       "address": "Necessitatibus sed r",
-      "balance": "20",
+      "balance": "70",
       "deleted": "0",
       "id": 6
     },
@@ -260,6 +260,15 @@
       "balance": "0",
       "deleted": "0",
       "id": 29
+    },
+    {
+      "fullName": "Abbot Dale",
+      "email": "jubytude@mailinator.com",
+      "phone": "+1 (633) 171-7005",
+      "address": "Voluptas commodi qui",
+      "balance": "0",
+      "deleted": "0",
+      "id": 30
     }
   ],
   "deposits": [
@@ -724,6 +733,17 @@
       "deleted": "0",
       "updatedAt": "2022-7-14",
       "id": 42
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "50",
+      "createdAt": "2022-7-15",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-15",
+      "id": 43
     }
   ],
   "withdraws": [

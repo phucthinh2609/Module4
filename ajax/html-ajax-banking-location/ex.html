@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,7 +94,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="frmEdit">
+                    <form id="frmEdit"> 
                         <div class="row">
                             <div class="col-xl-6">
                                 <label for="fullNameUp">FullName</label>
@@ -124,7 +125,7 @@
         </div>
     </div>
 
-    <div id="mdDeposit" class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div id="mdDeposit" class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" >
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -133,7 +134,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-alert-danger hide">
-
                     </div>
                     <form id="frmDeposit">
                         <div class="row">
@@ -153,8 +153,7 @@
                             </div>
                             <div class="col-xl-6">
                                 <label for="transactionAmountDep">Transaction Amount ($)</label>
-                                <input type="number" id="transactionAmountDep" name="transactionAmountDep"
-                                    class="form-control">
+                                <input type="number" id="transactionAmountDep" name="transactionAmountDep" class="form-control">
                             </div>
                         </div>
                     </form>
@@ -185,13 +184,13 @@
         function loadCustomers() {
 
             $.ajax({
-                    type: "GET",
-                    url: "http://localhost:3000/customers?isDeleted=0"
-                })
-                .done((data) => {
-                    $.each(data, (i, item) => {
-                        id = item.id;
-                        let str = `
+                type: "GET",
+                url: "http://localhost:3000/customers?isDeleted=0"
+            })
+            .done((data) => {
+                $.each(data, (i, item) => {
+                    id = item.id;
+                    let str = `
                         <tr id="tr_${item.id}">
                             <td>${item.id}</th>
                             <td>${item.fullName}</td>
@@ -215,14 +214,14 @@
                         </tr>
                     `;
 
-                        $("#tbCustomer tbody").prepend(str);
-                    })
+                    $("#tbCustomer tbody").prepend(str);
+                })
 
-                    handleEditBtn();
+                handleEditBtn();
 
-                    handleDepositBtn();
+                handleDepositBtn();
 
-                });
+            });
         }
 
 
@@ -242,12 +241,12 @@
             customer.isDeleted = +0;
 
             $.ajax({
-                    type: "POST",
-                    url: "http://localhost:3000/customers",
-                    data: customer
-                })
-                .done((data) => {
-                    let str = `
+                type: "POST",
+                url: "http://localhost:3000/customers",
+                data: customer
+            })
+            .done((data) => {
+                let str = `
                     <tr id="tr_${data.id}">
                         <td>${data.id}</th>
                         <td>${data.fullName}</td>
@@ -271,12 +270,12 @@
                     </tr>
                 `;
 
-                    $("#tbCustomer tbody").prepend(str);
+                $("#tbCustomer tbody").prepend(str);
 
-                    handleEditBtn();
+                handleEditBtn();
 
-                    handleDepositBtn();
-                });
+                handleDepositBtn();
+            });
 
             $("#frmCreate")[0].reset();
         }
@@ -296,29 +295,29 @@
             deposit.isDeleted = 0;
 
             $.ajax({
-                    type: "POST",
-                    url: "http://localhost:3000/deposits",
-                    data: deposit
-                })
-                .done((data) => {
-                    console.log("deposit");
-                    console.log(data);
-                })
-                .fail((err) => {
-                    alert("Deposit fail")
-                })
+                type: "POST",
+                url: "http://localhost:3000/deposits",
+                data: deposit
+            })
+            .done((data) => {
+                console.log("deposit");
+                console.log(data);
+            })
+            .fail((err) => {
+                alert("Deposit fail")
+            })
 
             customer.balance = Number.parseInt(customer.balance) + transactionAmount;
 
             $.ajax({
-                    type: "PUT",
-                    url: "http://localhost:3000/customers/" + customer.id,
-                    data: customer
-                })
-                .done((data) => {
-                    console.log("update balance")
-                    console.log(data)
-                    let str = `
+                type: "PUT",
+                url: "http://localhost:3000/customers/" + customer.id,
+                data: customer
+            })
+            .done((data) => {
+                console.log("update balance")
+                console.log(data)
+                let str = `
                     <tr id="tr_${data.id}">
                         <td>${data.id}</th>
                         <td>${data.fullName}</td>
@@ -342,16 +341,16 @@
                     </tr>
                 `;
 
-                    let currentRow = $('#tr_' + data.id);
-                    currentRow.replaceWith(str);
+                let currentRow = $('#tr_' + data.id);
+                currentRow.replaceWith(str);
 
-                    handleEditBtn();
+                handleEditBtn();
 
-                    handleDepositBtn();
-                })
-                .fail((err) => {
-                    alert("Update fail")
-                })
+                handleDepositBtn();
+            })
+            .fail((err) => {
+                alert("Update fail")
+            })
 
             $('#mdDeposit').modal('hide');
         }
@@ -377,13 +376,13 @@
             customer.address = address;
 
             $.ajax({
-                    type: "PUT",
-                    url: "http://localhost:3000/customers/" + customer.id,
-                    data: customer
-                })
-                .done((data) => {
+                type: "PUT",
+                url: "http://localhost:3000/customers/" + customer.id,
+                data: customer
+            })
+            .done((data) => {
 
-                    let str = `
+                let str = `
                     <tr id="tr_${data.id}">
                         <td>${data.id}</th>
                         <td>${data.fullName}</td>
@@ -407,17 +406,17 @@
                     </tr>
                 `;
 
-                    let currentRow = $('#tr_' + data.id);
-                    currentRow.replaceWith(str);
+                let currentRow = $('#tr_' + data.id);
+                currentRow.replaceWith(str);
 
-                    handleEditBtn();
+                handleEditBtn();
 
-                    handleDepositBtn();
+                handleDepositBtn();
 
-                })
-                .fail((err) => {
-                    alert("Update fail")
-                })
+            })
+            .fail((err) => {
+                alert("Update fail")
+            })
 
             $('#mdEdit').modal('hide');
         })
@@ -482,49 +481,49 @@
 
         function findById(id) {
             return $.ajax({
-                    type: "GET",
-                    url: "http://localhost:3000/customers/" + id
-                })
-                .done((data) => {
-                    customer = data;
-                })
-                .fail((err) => {
-                    alert("Id not found")
-                })
+                type: "GET",
+                url: "http://localhost:3000/customers/" + id
+            })
+            .done((data) => {
+                customer = data;
+            })
+            .fail((err) => {
+                alert("Id not found")
+            })
         }
 
         $('#frmCreate').validate({
             rules: {
-                fullNameCre: {
+                fullName: {
                     required: true,
                     minlength: 3,
                     maxlength: 50
                 },
-                emailCre: {
+                email: {
                     required: true,
                     email: true,
                     minlength: 10,
                     maxlength: 50
                 },
-                addressCre: {
+                address: {
                     required: false,
                     minlength: 5,
                     maxlength: 50
                 }
             },
             messages: {
-                fullNameCre: {
+                fullName: {
                     required: "Vui lòng nhập tên đầy đủ",
                     minlength: $.validator.format("Họ tên tối thiểu {0} ký tự"),
                     maxlength: $.validator.format("Họ tên tối đa {0} ký tự")
                 },
-                emailCre: {
+                email: {
                     required: "Vui lòng nhập email đầy đủ",
                     email: "Vui lòng nhập đúng định dạng email",
                     minlength: $.validator.format("Email tối thiểu {0} ký tự"),
                     maxlength: $.validator.format("Email tối đa {0} ký tự")
                 },
-                addressCre: {
+                address: {
                     minlength: $.validator.format("Địa chỉ tối thiểu {0} ký tự"),
                     maxlength: $.validator.format("Địa chỉ tối đa {0} ký tự")
                 }
@@ -533,7 +532,7 @@
             errorPlacement: function (error, element) {
                 error.appendTo("#mdCreate .modal-alert-danger");
             },
-            showErrors: function (errorMap, errorList) {
+            showErrors: function(errorMap, errorList) {
                 if (this.numberOfInvalids() > 0) {
                     $("#mdCreate .modal-alert-danger").removeClass("hide").addClass("show");
                 } else {
@@ -542,61 +541,7 @@
                 }
                 this.defaultShowErrors();
             },
-            submitHandler: function () {
-                doCreate();
-            }
-        });
-
-        $('#frmEdit').validate({
-            rules: {
-                fullNameUp: {
-                    required: true,
-                    minlength: 3,
-                    maxlength: 50
-                },
-                emailUp: {
-                    required: true,
-                    email: true,
-                    minlength: 10,
-                    maxlength: 50
-                },
-                addressUp: {
-                    required: false,
-                    minlength: 5,
-                    maxlength: 50
-                }
-            },
-            messages: {
-                fullNameUp: {
-                    required: "Vui lòng nhập tên đầy đủ",
-                    minlength: $.validator.format("Họ tên tối thiểu {0} ký tự"),
-                    maxlength: $.validator.format("Họ tên tối đa {0} ký tự")
-                },
-                emailUp: {
-                    required: "Vui lòng nhập email đầy đủ",
-                    email: "Vui lòng nhập đúng định dạng email",
-                    minlength: $.validator.format("Email tối thiểu {0} ký tự"),
-                    maxlength: $.validator.format("Email tối đa {0} ký tự")
-                },
-                addressUp: {
-                    minlength: $.validator.format("Địa chỉ tối thiểu {0} ký tự"),
-                    maxlength: $.validator.format("Địa chỉ tối đa {0} ký tự")
-                }
-            },
-            errorLabelContainer: "#mdCreate .modal-alert-danger",
-            errorPlacement: function (error, element) {
-                error.appendTo("#mdCreate .modal-alert-danger");
-            },
-            showErrors: function (errorMap, errorList) {
-                if (this.numberOfInvalids() > 0) {
-                    $("#mdCreate .modal-alert-danger").removeClass("hide").addClass("show");
-                } else {
-                    $("#mdCreate .modal-alert-danger").removeClass("show").addClass("hide").empty();
-                    $("#frmCreate input.error").removeClass("error");
-                }
-                this.defaultShowErrors();
-            },
-            submitHandler: function () {
+            submitHandler: function() {
                 doCreate();
             }
         });
@@ -622,7 +567,7 @@
             errorPlacement: function (error, element) {
                 error.appendTo("#mdDeposit .modal-alert-danger");
             },
-            showErrors: function (errorMap, errorList) {
+            showErrors: function(errorMap, errorList) {
                 if (this.numberOfInvalids() > 0) {
                     $("#mdDeposit .modal-alert-danger").removeClass("hide").addClass("show");
                 } else {
@@ -631,7 +576,7 @@
                 }
                 this.defaultShowErrors();
             },
-            submitHandler: function () {
+            submitHandler: function() {
                 doDeposit();
             }
         });

@@ -1,0 +1,59 @@
+{
+  "customers": [
+    {
+      "fullName": "Vincent Poole",
+      "email": "buhazejow@mailinator.com",
+      "phone": "+1 (259) 773-5024",
+      "locationRegion": {
+        "address": "Aut minima debitis a",
+        "provinceId": "30",
+        "provinceName": "Tỉnh Hải Dương",
+        "districtId": "296",
+        "districtName": "Huyện Bình Giang",
+        "wardId": "10945",
+        "wardName": "Thị trấn Kẻ Sặt"
+      },
+      "balance": 0,
+      "deleted": 0,
+      "id": 1
+    },
+    {
+      "fullName": "Mollie Benson",
+      "email": "cine@mailinator.com",
+      "phone": "+1 (263) 651-2995",
+      "locationRegion": {
+        "address": "Quia nobis a ut elig",
+        "provinceId": "83",
+        "provinceName": "Tỉnh Bến Tre",
+        "districtId": "836",
+        "districtName": "Huyện Ba Tri",
+        "wardId": "29110",
+        "wardName": "Thị trấn Ba Tri"
+      },
+      "balance": 0,
+      "deleted": 0,
+      "id": 2
+    },
+    {
+      "fullName": "Gay Hardy",
+      "email": "dogokig@mailinator.com",
+      "phone": "+1 (252) 509-3688",
+      "locationRegion": {
+        "address": "Eum qui sit et sed ",
+        "provinceId": "52",
+        "provinceName": "Tỉnh Bình Định",
+        "districtId": "542",
+        "districtName": "Huyện An Lão",
+        "wardId": "21609",
+        "wardName": "Thị trấn An Lão"
+      },
+      "balance": 0,
+      "deleted": 0,
+      "id": 3
+    }
+  ],
+  "deposits": [],
+  "withdraws": [],
+  "transfers": [],
+  "locationRegions": []
+}

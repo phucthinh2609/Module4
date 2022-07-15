@@ -10,45 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19cd265-4814-42a1-8257-68e9ee2f7ba9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cg/model/dto/TransferDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/configration/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/configration/AppInit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/controller/SmartphoneController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/model/Smartphone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/repository/ISmartphoneRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/service/ISmartphoneService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/java/com/mvpt/service/SmartphoneService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-ajax-mobile-management/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../james/spring-grandle-customer-validation/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-mvc-banking-transaction.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cg/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cg/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cg/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cg/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cg/service/customer/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cg/service/customer/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cg/service/customer/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cg/service/customer/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/transfer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/transfer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cg/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cg/config/AppConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cg/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cg/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cg/repository/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cg/repository/CustomerRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cg/service/customer/CustomerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cg/service/customer/CustomerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cg/service/customer/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cg/service/customer/CustomerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/config/AppConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/repository/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/repository/CustomerRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/service/customer/CustomerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/service/customer/CustomerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/service/customer/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/classes/com/cg/service/customer/CustomerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/views/transfer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/views/transfer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring-mvc-banking-transaction/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring-mvc-thymeleaf-product/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

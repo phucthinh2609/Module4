@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('c0222k1.json');
+const router = jsonServer.router('banking-location.json');
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);

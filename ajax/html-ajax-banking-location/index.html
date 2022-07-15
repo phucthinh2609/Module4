@@ -309,30 +309,30 @@
                     $.each(data, (i, item) => {
 
                         let str = `
-                            <tr id="tr_${item.id}">
-                                <td>${item.id}</td>
-                                <td>${item.fullName}</td>
-                                <td>${item.email}</td>
-                                <td>${item.phone}</td>
-                                <td>${item.address}</td>
-                                <td>${item.balance}</td>
-                                <td>
-                                    <button class="btn btn-outline-dark edit" data-id="${item.id}"><i class="fa-solid fa-pen-to-square"></i></button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-outline-success deposit" data-id="${item.id}"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-outline-warning withdraw" data-id="${item.id}"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-outline-primary transfer" data-id="${item.id}"><i class="fa fa-exchange" aria-hidden="true"></i></button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-outline-danger delete" data-id="${item.id}"><i class="fa-solid fa-trash"></i></button>
-                                </td>
-                            </tr>
-                        `;
+                    <tr id="tr_${item.id}">
+                        <td>${item.id}</td>
+                        <td>${item.fullName}</td>
+                        <td>${item.email}</td>
+                        <td>${item.phone}</td>
+                        <td>${item.address}</td>
+                        <td>${item.balance}</td>
+                        <td>
+                            <button class="btn btn-outline-dark edit" data-id="${item.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-success deposit" data-id="${item.id}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-warning withdraw" data-id="${item.id}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary transfer" data-id="${item.id}"><i class="fa fa-exchange" aria-hidden="true"></i></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger delete" data-id="${item.id}"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
 
                         $('#tbCustomer tbody').append(str);
 

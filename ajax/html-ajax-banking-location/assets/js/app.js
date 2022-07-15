@@ -36,12 +36,12 @@ class App {
 }
 
 class Customer {
-    constructor(id, fullName, email, phone, address, balance = 0, deleted = 0) {
+    constructor(id, fullName, email, phone, locationRegion, balance = 0, deleted = 0) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
-        this.address = address;
+        this.locationRegion = locationRegion;
         this.balance = balance;
         this.deleted = deleted;
     }
@@ -91,5 +91,17 @@ class Transfer {
         this.transferAmount = transferAmount;
         this.senderId = senderId;
         this.recipientId = recipientId;
+    }
+}
+
+class LocationRegion {
+    constructor(address,provinceId,provinceName,districtId,districtName,wardId,wardName){
+        this.address = address;
+        this.provinceId = provinceId;
+        this.provinceName = provinceName;
+        this.districtId = districtId;
+        this.districtName = districtName;
+        this.wardId = wardId;
+        this.wardName = wardName;
     }
 }
