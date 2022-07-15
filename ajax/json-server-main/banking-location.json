@@ -13,7 +13,7 @@
         "wardId": "26575",
         "wardName": "Thị trấn Ngãi Giao"
       },
-      "balance": 0,
+      "balance": 100,
       "deleted": 0,
       "id": 1
     },
@@ -47,7 +47,7 @@
         "wardId": "11581",
         "wardName": "Thị trấn An Dương"
       },
-      "balance": 100,
+      "balance": 990,
       "deleted": 0,
       "id": 3
     },
@@ -55,17 +55,15 @@
       "fullName": "Juliet Turner",
       "email": "kawefuxuw@mailinator.com",
       "phone": "+1 (858) 708-7131",
-      "locationRegion": {
-        "address": "Nulla expedita maior",
-        "provinceId": "94",
-        "provinceName": "Tỉnh Sóc Trăng",
-        "districtId": "942",
-        "districtName": "Huyện Châu Thành",
-        "wardId": "31569",
-        "wardName": "Thị trấn Châu Thành"
-      },
-      "balance": 0,
-      "deleted": 0,
+      "locationRegion[address]": "Nulla expedita maior",
+      "locationRegion[provinceId]": "94",
+      "locationRegion[provinceName]": "Tỉnh Sóc Trăng",
+      "locationRegion[districtId]": "942",
+      "locationRegion[districtName]": "Huyện Châu Thành",
+      "locationRegion[wardId]": "31569",
+      "locationRegion[wardName]": "Thị trấn Châu Thành",
+      "balance": "0",
+      "deleted": "1",
       "id": 4
     },
     {
@@ -108,6 +106,17 @@
       "deleted": "0",
       "updatedAt": "2022-7-15",
       "id": 2
+    },
+    {
+      "customerId": "3",
+      "transactionAmount": "1000",
+      "createdAt": "2022-7-15",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-15",
+      "id": 3
     }
   ],
   "withdraws": [
@@ -123,6 +132,13 @@
       "updatedAt": "2022-7-15"
     }
   ],
-  "transfers": [],
+  "transfers": [
+    {
+      "transferAmount": "100",
+      "senderId": "3",
+      "recipientId": "1",
+      "id": 1
+    }
+  ],
   "locationRegions": []
 }

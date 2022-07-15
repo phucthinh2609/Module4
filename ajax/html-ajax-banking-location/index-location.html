@@ -85,9 +85,9 @@
             <i class="fa fa-exchange" aria-hidden="true"></i>
             Transfer
         </button>
-        <button type="button" class="btn btn-danger suspended" title="Suspended" data-toggle="tooltip">
+        <button type="button" class="btn btn-danger delete" title="Delete" data-toggle="tooltip">
             <i class="fa fa-ban" aria-hidden="true"></i>
-            Suspended
+            Delete
         </button>
     </div>
 
@@ -358,17 +358,17 @@
                             </div>
                             <div class="form-group row">
                                 <div class="mb-3 col-md-6">
-                                    <label class="col-sm-12 col-form-label">Sender balance</label>
+                                    <label class="col-sm-12 col-form-label">Recipient Name</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control num-space" id="balanceTrf"
-                                            name="balanceTrf" readonly>
+                                        <select class="form-select" id="recipientNameTrf" name="recipientNameTrf"></select>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label class="col-sm-12 col-form-label">Recipient Name</label>
+                                    <label class="col-sm-12 col-form-label">Sender balance</label>
                                     <div class="col-sm-12">
-                                        <select class="form-select" id="recipientIdTrf" name="recipientIdTrf"></select>
+                                        <input type="text" class="form-control num-space" id="senderBalanceTrf"
+                                            name="senderBalanceTrf" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -377,7 +377,7 @@
                                     <label class="col-sm-12 col-form-label">Transfer Amount ($)</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control num-space" id="transferAmountTrf"
-                                            name="transferAmountTrf">
+                                            name="transferAmountTrf" oninput="onChangeTransactionAmount()">
                                     </div>
                                 </div>
                                 <div class="mb-3 col-md-4">
@@ -532,9 +532,11 @@
 
                 $('.footer').removeClass('hide').addClass('show');
 
+                handleConfirmDelete(rowId);
                 handleShowUpdateModal(rowId);
                 handleShowDepositModal(rowId);
                 handleShowWithdrawModal(rowId);
+                handleShowTransferModal(rowId);
             }) 
         }
 
@@ -560,6 +562,21 @@
                 changeLocationOfCreateForm();
 
                 $('#mdCreate').modal('show');
+            })
+        }
+
+        function handleConfirmDelete(rowId) {
+            $('.delete').on('click', function () {
+
+                App.SweetAleart.showAleartConfirmDelete()
+                    .then((result) => {
+                        if (result.isConfirmed) {
+
+                            getCustomerById(rowId).then(function () {
+                                doDelete(rowId);
+                            })
+                        }
+                    })
             })
         }
 
@@ -623,6 +640,26 @@
             })
         }
 
+        function handleShowTransferModal(rowId) {
+            $('.transfer').on('click', function () {
+
+                getCustomerById(rowId).then(function () {
+                    $('#senderIdTrf').val(customer.id);
+                    $('#senderNameTrf').val(customer.fullName);
+                    $('#emailTrf').val(customer.email);
+                    $('#senderBalanceTrf').val(customer.balance);
+                    $('#feesTrf').val(10);
+                    $('#recipientNameTrf').empty;
+
+                    getAllCustomers().then(() => {
+                        drawRecipients(customers);
+                        $('#mdTransfer').modal('show');
+                    });
+                })
+
+            })
+        }
+
         $('#btnCreate').on('click', function () {
             $('#frmCreate').submit();
         });
@@ -638,6 +675,22 @@
         $('#btnWithdraw').on('click', function () {
             $('#frmWithdraw').submit();
         })
+
+        $('#btnTransfer').on('click', function(){
+            $('#frmTransfer').submit();
+        })
+
+        function onChangeTransactionAmount(){
+            let transactionAmount = document.getElementById("transferAmountTrf").value;
+            let fees = 0;
+            let feesAmount = 0;
+            let totalAmountOfTransaction = 0;
+
+            fees = document.getElementById("feesTrf").value;
+            feesAmount = (transactionAmount * fees) / 100;
+            totalAmountOfTransaction = Number(transactionAmount) + Number(feesAmount);
+            document.getElementById("transactionAmountTrf").value = totalAmountOfTransaction;
+        }
 
         function changeLocationOfCreateForm() {
             $('#province').on('change', () => {
@@ -689,7 +742,7 @@
 
         function unbindAll() {
             $('.edit').off;
-            $('.delete').off;
+            $('.suspended').off;
             $('.deposit').off;
             $('.withdraw').off;
             $('.transfer').off;
@@ -761,6 +814,28 @@
             .fail((error) => {
                 App.SweetAleart.showAleartError('Created fail')
             })
+        }
+
+        function doDelete(customerId) {
+            customer.deleted = 1;
+
+            $.ajax({
+                    "type": "PUT",
+                    "url": "http://localhost:3000/customers/" + customerId,
+                    "data": customer
+                })
+                .done((data) => {
+
+                    $('#tr_' + data.id).remove();
+
+                    unbindAll();
+                    handleGroupShowModal();
+
+                    App.SweetAleart.showAleartSuccess('Deleted customer infomation successful')
+                })
+                .fail((error) => {
+                    App.SweetAleart.showAleartError('Deleted customer infomation failed')
+                })
         }
 
         function doUpdate() {
@@ -896,6 +971,55 @@
             })
 
             
+        }
+
+        function doTransfer() {
+            let recipientId = $('#recipientNameTrf').val();
+            let senderId = $('#senderIdTrf').val();
+
+            if(recipientId != senderId) {
+                getCustomerById(recipientId).then(function(){
+                    receipent = customer;
+    
+                    getCustomerById(senderId).then(function(){
+                        sender = customer;
+    
+                        let transferAmount = +$('#transferAmountTrf').val();
+                        let fees = +$('#feesTrf').val()/100;
+                        let feesAmount = transferAmount * fees;
+                        let transactionAmount = Number(transferAmount) + Number(feesAmount);
+    
+                        if (sender.balance >= transactionAmount){
+
+                            delete transfer.id;
+                            transfer.transferAmount = transferAmount;
+                            transfer.senderId = senderId;
+                            transfer.recipientId = recipientId;
+        
+                            $.ajax({
+                                "type": "POST",
+                                "url": "http://localhost:3000/transfers",
+                                "data": transfer
+                            })
+                            .done((item) => {
+                                let transactionAmount = Number(item.transferAmount) + (Number(item.transferAmount) * Number(10/100));
+
+                                doIncrementBalance(receipent, item.transferAmount);
+                                doReduceBalance(sender, transactionAmount);
+
+                                $('#mdTransfer').modal('hide');
+                            })
+                            .fail((error) => {
+                                App.SweetAleart.showAleartError("Transfer failed");
+                        })
+                        }else {
+                            App.SweetAleart.showAleartError("Sender's balance not enough");
+                        }
+                    })
+                })
+            } else {
+                App.SweetAleart.showAleartError("Sender ID and Receipent ID should different");
+            }
         }
 
         function doIncrementBalance(obj, transactionAmount) {
@@ -1059,6 +1183,22 @@
             })  
         }
         
+        function drawRecipients(recipients) {
+            $('#recipientNameTrf').html('');
+
+            $.each(recipients, (i, item) => {
+                let str = "";
+                if(item.id != customer.id){
+                    str = `
+                        <option value="${item.id}">
+                            (${item.id}) ${item.fullName}
+                        </option>
+                    `
+                }
+                $('#recipientNameTrf').append(str);
+            })            
+        }
+
         $('#frmCreate').validate({
             rules: {
                 fullName: {
@@ -1252,6 +1392,42 @@
             },
             submitHandler: function(){
                 doWithdraw();
+            }
+        })
+
+        $('#frmTransfer').validate({
+            rules: {
+                transferAmountTrf: {
+                    required: true,
+                    number: true,
+                    min: 50,
+                    max: 100000
+                }
+                
+            },
+            messages: {
+                transferAmountTrf: {
+                    required: "Transaction Amount should be not empty ",
+                    number: "Please input data with number format",
+                    min: "More than {0} $",
+                    max: "Less than {0} $",
+                }
+            },
+            errorLabelContainer: "#mdTransfer .modal-alert-danger",
+            errorPlacement: function (error, element) {
+                error.appendTo("#mdTransfer .modal-alert-danger");
+            },
+            showErrors: function(errorMap, errorList) {
+                if (this.numberOfInvalids() > 0) {
+                    $("#mdTransfer .modal-alert-danger").removeClass("hide").addClass("show");
+                } else {
+                    $("#mdTransfer .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                    $("#frmTransfer input.error").removeClass("error");
+                }
+                this.defaultShowErrors();
+            },
+            submitHandler: function(){
+                doTransfer();
             }
         })
 
