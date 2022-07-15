@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="footer">
+    <div class="footer hide">
         <button type="button" class="btn btn-secondary edit" title="Edit" data-toggle="tooltip">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             Update
@@ -148,7 +148,7 @@
         </div>
     </div>
 
-    <div id="mdUpdate" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div id="mdEdit" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -157,7 +157,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-alert-danger hide"></div>
-                    <form id="frmUpdate" method="post">
+                    <form id="frmEdit" method="post">
                         <fieldset class="row g-3">
                             <div class="col-md-4">
                                 <label class="form-label">Full name</label>
@@ -492,62 +492,200 @@
                         $('#tbCustomer tbody').append(str);
 
                     })
-                    unbindAll()
-                    handleGroupShowModal();
+                    unbindAll();
+                    handleShowCreateModal();
+                    handleClickRow();
                 })
         }
 
-        function handleGroupShowModal() {
-            handleShowCreateModal();
-            handleClickRow()
+        function getCustomerById(id ) {
+            return $.ajax({
+                    async: false,
+                    type: "GET",
+                    url: "http://localhost:3000/customers/" + id
+                })
+                .done((data) => {
+                    customer = data;
+                })
+                .fail((error) => {
+                    App.SweetAleart.showAleartError('Id invalid')
+                })
+
+        }
+
+        function getAllCustomers() {
+            return $.ajax({
+                    type: "GET",
+                    url: "http://localhost:3000/customers?deleted=0"
+                })
+                .done((data) => {
+                    customers = data;
+                })
+        }
+
+        function handleClickRow() {
+            $('#tbCustomer tbody tr').on('click', function() {
+                 let rowId = $(this).data('id');
+                
+                 $(`#tbCustomer tbody tr td span.select-tab`).removeClass("selected").addClass("unselected");
+                 $(`#tbCustomer tbody tr#tr_${rowId} td span.select-tab`).removeClass("unselected").addClass("selected");
+
+                $('.footer').removeClass('hide').addClass('show');
+
+                handleShowUpdateModal(rowId);
+                handleShowDepositModal(rowId);
+                handleShowWithdrawModal(rowId);
+            }) 
         }
 
         function handleShowCreateModal(){
             $('.create-modal').on('click', () => {
                 
                 getAllProvince().then(() => {
-                    drawProvinces(provinces);
+                    drawProvinces(provinces, '#province');
 
                     province_id = provinces[0].province_id;
                 
                     getDistrictsByProvinceId(province_id).then(() => {
-                        drawDistricts(districts);
+                        drawDistricts(districts, '#district');
 
                         district_id = districts[0].district_id;
 
                         getWardsByDistrictId(district_id).then(() => {
-                            drawWards(wards);
+                            drawWards(wards, '#ward');
                         })
                     })
                 })
+
+                changeLocationOfCreateForm();
 
                 $('#mdCreate').modal('show');
             })
         }
 
-        function handleClickRow() {
-            let rowId = 0;
-            $('#tbCustomer tbody tr').on('click', function() {
-                rowId = $(this).data('id');
+        function handleShowUpdateModal(rowId) {
+
+            $('.edit').on('click', function () {
+
+                getCustomerById(rowId).then(function () {
+
+                    $('#fullNameUp').val(customer.fullName);
+                    $('#emailUp').val(customer.email);
+                    $('#phoneUp').val(customer.phone);
+                    $('#addressUp').val(customer.locationRegion.address);
+
+                    getAllProvince().then(() => {
+                        drawProvinces(provinces, '#provinceUp');
+
+                        province_id = customer.locationRegion.provinceId;
+                    
+                        getDistrictsByProvinceId(province_id).then(() => {
+                            drawDistricts(districts, '#districtUp');
+
+                            district_id = customer.locationRegion.districtId;
+
+                            getWardsByDistrictId(district_id).then(() => {
+                                drawWards(wards, '#wardUp');
+                            })
+                        })
+                        $('#provinceUp').val(customer.locationRegion.provinceId);
+                    })
+                    
+                    changeLocationOfUpdateForm()
+                    $('#mdEdit').modal('show');
+                })
             })
+        }
 
-            if(rowId != 0) {
-                $(`#tbCustomer tbody tr#tr_${rowId} td span.select-tab`).removeClass("unselected").addClass("selected");
-            }else {
-                $(`#tbCustomer tbody tr td span.select-tab`).removeClass("selected").addClass("unselected");
+        function handleShowDepositModal(rowId) {
+            $('.deposit').on('click', function () {
 
-            }
+                getCustomerById(rowId).then(function () {
+                    $('#customerIdDep').val(customer.id);
+                    $('#fullNameDep').val(customer.fullName);
+                    $('#balanceDep').val(customer.balance);
+
+                    $('#mdDeposit').modal('show');
+                })
+            })
+        }
+        
+        function handleShowWithdrawModal(rowId) {
+            $('.withdraw').on('click', function () {
+
+                getCustomerById(rowId).then(function () {
+                    $('#customerIdWd').val(customer.id);
+                    $('#fullNameWd').val(customer.fullName);
+                    $('#balanceWd').val(customer.balance);
+
+                    $('#mdWithdraw').modal('show');
+                })
+            })
         }
 
         $('#btnCreate').on('click', function () {
             $('#frmCreate').submit();
         });
 
-        $('#province').on('change', () => {
-            province_id = $('#province').val();
-
-            districtsChange(province_id);
+        $('#btnEdit').on('click', function () {
+            $('#frmEdit').submit();
         })
+        
+        $('#btnDeposit').on('click', function () {
+            $('#frmDeposit').submit();
+        })
+
+        $('#btnWithdraw').on('click', function () {
+            $('#frmWithdraw').submit();
+        })
+
+        function changeLocationOfCreateForm() {
+            $('#province').on('change', () => {
+                province_id = $('#province').val();
+
+                getDistrictsByProvinceId(province_id).then(() => {
+
+                    drawDistricts(districts, '#district');
+
+                    getWardsByDistrictId(districts[0].district_id).then(() => {
+
+                        drawWards(wards, '#ward');
+                    })  
+
+                    $('#district').on('change', () => {
+                        district_id = $('#district').val();
+
+                        getWardsByDistrictId(district_id).then(() => {
+                            drawWards(wards, '#ward');
+                        })                  
+                    })
+                })
+            })
+        }
+        
+        function changeLocationOfUpdateForm() {
+            $('#provinceUp').on('change', () => {
+                province_id = $('#provinceUp').val();
+
+                getDistrictsByProvinceId(province_id).then(() => {
+
+                    drawDistricts(districts, '#districtUp');
+
+                    getWardsByDistrictId(districts[0].district_id).then(() => {
+
+                        drawWards(wards, '#wardUp');
+                    })  
+
+                    $('#districtUp').on('change', () => {
+                        district_id = $('#districtUp').val();
+
+                        getWardsByDistrictId(district_id).then(() => {
+                            drawWards(wards, '#wardUp');
+                        })                  
+                    })
+                })
+            })
+        }
 
         function unbindAll() {
             $('.edit').off;
@@ -586,14 +724,82 @@
             customer.balance = 0;
 
             $.ajax({
-                    "headers": {
+                headers: {
+                    accepts: "application/json",
+                    "content-type": "application/json"
+                },
+                
+                type: "POST",
+                url: "http://localhost:3000/customers" ,
+                data: JSON.stringify(customer)
+
+            })
+            .done((item) => {
+                let str = `
+                    <tr id="tr_${item.id}" data-id="${item.id}">
+                        <td><span class="select-tab unselected"></span></td>
+                        <td class="text-center">${item.id}</td>
+                        <td>${item.fullName}</td>
+                        <td>${item.email}</td>
+                        <td class="text-center">${item.phone}</td>
+                        <td class="text-end num-space">${item.balance}</td>
+                        <td class="text-center">${item.locationRegion.provinceName}</td>
+                        <td class="text-center">${item.locationRegion.districtName}</td>
+                        <td class="text-center">${item.locationRegion.wardName}</td>
+                        <td class="text-center">${item.locationRegion.address}</td>
+                    </tr>
+                `;
+                $('#tbCustomer tbody').append(str);
+
+                $('#mdCreate').modal('hide');
+
+                App.SweetAleart.showAleartSuccess('Created successful')
+
+                unbindAll();
+                handleClickRow();
+            })
+            .fail((error) => {
+                App.SweetAleart.showAleartError('Created fail')
+            })
+        }
+
+        function doUpdate() {
+
+                let provinceId = $('#provinceUp').val();
+                let provinceName = $('#provinceUp :selected').text();
+                let districtId = $('#districtUp').val();
+                let districtName = $('#districtUp :selected').text();
+                let wardId = $('#wardUp').val();
+                let wardName = $('#wardUp :selected').text(); 
+                let address = $('#addressUp').val();
+
+                let fullName = $('#fullNameUp').val();
+                let email = $('#emailUp').val();
+                let phone = $('#phoneUp').val();
+
+
+                locationRegion.address = address;
+                locationRegion.provinceId = provinceId;
+                locationRegion.provinceName = provinceName;
+                locationRegion.districtId = districtId;
+                locationRegion.districtName = districtName;
+                locationRegion.wardId = wardId;
+                locationRegion.wardName = wardName; 
+
+                customer.fullName = fullName;
+                customer.email = email;
+                customer.phone = phone;
+                customer.locationRegion = locationRegion;
+
+                $.ajax({
+                    headers: {
                         "accepts": "application/json",
                         "content-type": "application/json"
                     },
                     
-                    "type": "POST",
-                    "url": "http://localhost:3000/customers",
-                    "data": JSON.stringify(customer)
+                    type: "PUT",
+                    url: "http://localhost:3000/customers/" + customer.id,
+                    data: JSON.stringify(customer)
                 })
                 .done((item) => {
                     let str = `
@@ -610,43 +816,176 @@
                             <td class="text-center">${item.locationRegion.address}</td>
                         </tr>
                     `;
-                    $('#tbCustomer tbody').append(str);
 
-                    $('#mdCreate').modal('hide');
+                    let currentRow = $('#tr_' + item.id);
 
-                    App.SweetAleart.showAleartSuccess('Created successful')
+                    currentRow.replaceWith(str);
+
+                    $('#mdEdit').modal('hide');
+
+                    App.SweetAleart.showAleartSuccess('Updated customer infomation successful')
 
                     unbindAll();
-                    handleGroupShowModal();
+                    handleClickRow();
                 })
+
                 .fail((error) => {
-                    App.SweetAleart.showAleartError('Created fail')
+                    App.SweetAleart.showAleartError('Updated customer infomation failed')
+
                 })
         }
 
-        function districtsChange(province_id){
+        function doDeposit() {
+            let customerId = customer.id;
+            
+            getCustomerById(customerId).then(() => {
+                let transactionAmount = $('#transactionAmountDep').val();
+                let createdAt = getDateTime();
+                let updatedAt = getDateTime();
+                
+                delete deposit.id;
+                deposit.customerId = customerId;
+                deposit.transactionAmount = transactionAmount;
+                deposit.createdAt = createdAt;
+                deposit.updatedAt = updatedAt;
+                
+                $.ajax({
+                    "type": "POST",
+                    "url": "http://localhost:3000/deposits",
+                    "data": deposit
+            })
+            .done((item) => {
+                doIncrementBalance(customer, item.transactionAmount);
+            })
+            .fail((error) => {
+                App.SweetAleart.showAleartError("Deposit failed");
+            })
+            });
+        }
 
-            getDistrictsByProvinceId(province_id).then(() => {
+        function doWithdraw() {
+            let customerId = customer.id;
 
-                drawDistricts(districts);
-                wardsChange(districts[0].district_id);
+            getCustomerById(customerId).then(() => {
+                let transactionAmount = +$('#transactionAmountWd').val();
+                let createdAt = getDateTime();
+                let updatedAt = getDateTime();
+    
+                delete deposit.id;
+                withdraw.customerId = customerId;
+                withdraw.transactionAmount = transactionAmount;
+                withdraw.createdAt = createdAt;
+                withdraw.updatedAt = updatedAt;
+    
+                if (transactionAmount <= customer.balance) {
 
-                $('#district').on('change', () => {
-                    district_id = $('#district').val();
+                    $.ajax({
+                    "type": "POST",
+                    "url": "http://localhost:3000/withdraws",
+                    "data": withdraw
+                    })
+                    .done((item) => {
+                        doReduceBalance(customer, item.transactionAmount);
+                    })
+                    .fail((error) => {
+                        App.SweetAleart.showAleartError("Withdraw failed");
+                    })
+                } else {
+                    App.SweetAleart.showAleartError("Balance not enough")
+                }
+            })
 
-                    wardsChange(district_id);
+            
+        }
+
+        function doIncrementBalance(obj, transactionAmount) {
+            obj.balance = Number(obj.balance) + Number(transactionAmount);
+
+            $.ajax({
+                headers: {
+                    "accepts": "application/json",
+                    "content-type": "application/json"
+                },
+                
+                type: "PUT",
+                url: "http://localhost:3000/customers/" + obj.id,
+                data: JSON.stringify(obj)
+
                 })
+                .done((item) => {
+                    let str = `
+                        <tr id="tr_${item.id}" data-id="${item.id}">
+                            <td><span class="select-tab unselected"></span></td>
+                            <td class="text-center">${item.id}</td>
+                            <td>${item.fullName}</td>
+                            <td>${item.email}</td>
+                            <td class="text-center">${item.phone}</td>
+                            <td class="text-end num-space">${item.balance}</td>
+                            <td class="text-center">${item.locationRegion.provinceName}</td>
+                            <td class="text-center">${item.locationRegion.districtName}</td>
+                            <td class="text-center">${item.locationRegion.wardName}</td>
+                            <td class="text-center">${item.locationRegion.address}</td>
+                        </tr>
+                    `;
+
+                    let currentRow = $('#tr_' + item.id);
+
+                    currentRow.replaceWith(str);
+
+                    unbindAll();
+                    handleClickRow();
+
+                    $('#mdDeposit').modal('hide');
+                    App.SweetAleart.showAleartSuccess('Successful')
+                })
+                .fail((error) => {
+                    App.SweetAleart.showAleartError('Customer invalid')
+                })
+        }
+
+        function doReduceBalance(obj, transactionAmount) {
+            obj.balance = Number(obj.balance) - Number(transactionAmount);
+
+            $.ajax({
+                headers: {
+                    "accepts": "application/json",
+                    "content-type": "application/json"
+                },
+                
+                type: "PUT",
+                url: "http://localhost:3000/customers/" + obj.id,
+                data: JSON.stringify(obj)
             })
-        };
+            .done((item) => {
+                let str = `
+                    <tr id="tr_${item.id}" data-id="${item.id}">
+                        <td><span class="select-tab unselected"></span></td>
+                        <td class="text-center">${item.id}</td>
+                        <td>${item.fullName}</td>
+                        <td>${item.email}</td>
+                        <td class="text-center">${item.phone}</td>
+                        <td class="text-end num-space">${item.balance}</td>
+                        <td class="text-center">${item.locationRegion.provinceName}</td>
+                        <td class="text-center">${item.locationRegion.districtName}</td>
+                        <td class="text-center">${item.locationRegion.wardName}</td>
+                        <td class="text-center">${item.locationRegion.address}</td>
+                    </tr>
+                `;
 
-        function wardsChange(district_id){
+                let currentRow = $('#tr_' + item.id);
 
-            getWardsByDistrictId(district_id).then(() => {
+                currentRow.replaceWith(str);
 
-                drawWards(wards);
+                unbindAll();
+                handleClickRow();
 
+                $('#mdWithdraw').modal('hide');
+                App.SweetAleart.showAleartSuccess('Successful')
             })
-        };
+            .fail((error) => {
+                App.SweetAleart.showAleartError('Customer invalid')
+            })
+        }
 
         function getAllProvince(){
             return $.ajax({
@@ -686,32 +1025,38 @@
                     App.SweetAleart.showAleartError('Ward ID invalid')
                 })
         }
+        
+        function getDateTime() {
+            let today = new Date();
+            let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            return date;
+        }
 
-        function drawProvinces(provinces) {
-            $('#province').html('');
+        function drawProvinces(provinces, attributeName) {
+            $(attributeName).html('');
 
             $.each(provinces, (i, item) => {
                 let str = `<option value="${item.province_id}">${item.province_name}</option>`
 
-                $('#province').append(str);
+                $(attributeName).append(str);
             })            
         }
         
-        function drawDistricts(districts) {
-            $('#district').html('');
+        function drawDistricts(districts, attributeName) {
+            $(attributeName).html('');
 
             $.each(districts, (i, item) => {
                 let str = `<option value="${item.district_id}">${item.district_name}</option>`
-                $('#district').append(str);
-            })            
+                $(attributeName).append(str);
+            })  
         }
         
-        function drawWards(wards) {
-            $('#ward').html('');
+        function drawWards(wards, attributeName) {
+            $(attributeName).html('');
             $.each(wards, (i, item) => {
                 let str = `<option value="${item.ward_id}">${item.ward_name}</option>`
-                $('#ward').append(str);
-            })            
+                $(attributeName).append(str);
+            })  
         }
         
         $('#frmCreate').validate({
@@ -776,6 +1121,140 @@
             }
         })
 
+        $('#frmEdit').validate({
+            rules: {
+                fullNameUp: {
+                    required: true,
+                    isFullNameRegex: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                emailUp: {
+                    required: true,
+                    isEmailRegex: true,
+                    minlength: 10,
+                    maxlength: 50
+                },
+                phoneUp: {
+                    required: true,
+                    isPhoneRegex: true,
+                    minlength: 5,
+                    maxlength: 50
+                },
+                addressUp: {
+                    required: true,
+                }
+            },
+            messages: {
+                fullNameUp: {
+                    required: "Full Name should be not empty ",
+                    minlength: "Length of full name should more 3 words",
+                    maxlength: "Length of full name less more 50 words"
+                },
+                emailUp: {
+                    required: "Email should be not empty ",
+                    minlength: "Length of full name should more 10 words",
+                    maxlength: "Length of full name less more 50 words"
+                },
+                phoneUp: {
+                    required: "Phone should be not empty ",
+                    minlength: "Length of full name should more 5 words",
+                    maxlength: "Length of full name less more 50 words"
+                },
+                addressUp: {
+                    required: "Address should be not empty ",
+                }
+            },
+            errorLabelContainer: "#mdEdit .modal-alert-danger",
+            errorPlacement: function (error, element) {
+                error.appendTo("#mdEdit .modal-alert-danger");
+            },
+            showErrors: function(errorMap, errorList) {
+                if (this.numberOfInvalids() > 0) {
+                    $("#mdEdit .modal-alert-danger").removeClass("hide").addClass("show");
+                } else {
+                    $("#mdEdit .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                    $("#frmEdit input.error").removeClass("error");
+                }
+                this.defaultShowErrors();
+            },
+            submitHandler: function(){
+                doUpdate();
+            }
+        })
+
+        $('#frmDeposit').validate({
+            rules: {
+                transactionAmountDep: {
+                    required: true,
+                    number: true,
+                    min: 50,
+                    max: 100000
+                }
+                
+            },
+            messages: {
+                transactionAmountDep: {
+                    required: "Transaction Amount should be not empty ",
+                    number: "Please input data with number format",
+                    min: "More than {0} $",
+                    max: "Less than {0} $",
+                }
+            },
+            errorLabelContainer: "#mdDeposit .modal-alert-danger",
+            errorPlacement: function (error, element) {
+                error.appendTo("#mdDeposit .modal-alert-danger");
+            },
+            showErrors: function(errorMap, errorList) {
+                if (this.numberOfInvalids() > 0) {
+                    $("#mdDeposit .modal-alert-danger").removeClass("hide").addClass("show");
+                } else {
+                    $("#mdDeposit .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                    $("#frmDeposit input.error").removeClass("error");
+                }
+                this.defaultShowErrors();
+            },
+            submitHandler: function(){
+                doDeposit();
+            }
+        })
+
+        $('#frmWithdraw').validate({
+            rules: {
+                transactionAmountWd: {
+                    required: true,
+                    number: true,
+                    min: 50,
+                    max: 100000
+                }
+                
+            },
+            messages: {
+                transactionAmountWd: {
+                    required: "Transaction Amount should be not empty ",
+                    number: "Please input data with number format",
+                    min: "More than {0} $",
+                    max: "Less than {0} $",
+                }
+            },
+            errorLabelContainer: "#mdWithdraw .modal-alert-danger",
+            errorPlacement: function (error, element) {
+                error.appendTo("#mdWithdraw .modal-alert-danger");
+            },
+            showErrors: function(errorMap, errorList) {
+                if (this.numberOfInvalids() > 0) {
+                    $("#mdWithdraw .modal-alert-danger").removeClass("hide").addClass("show");
+                } else {
+                    $("#mdWithdraw .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                    $("#frmWithdraw input.error").removeClass("error");
+                }
+                this.defaultShowErrors();
+            },
+            submitHandler: function(){
+                doWithdraw();
+            }
+        })
+
         $.validator.addMethod("isFullNameRegex", function (value, element) {
             return this.optional(element) || /^([A-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂỄỆẾỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪ" + "ỬỮỰỲỴÝỶỸ]{1}[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêếìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]{1,}){2,}$/i.test(value);
         }, "Full name needs to capitalize the first letter. And must contains two or more words. Ex: 'Mai Thịnh'");
@@ -787,7 +1266,6 @@
         $.validator.addMethod("isEmailRegex", function (value, element) {
             return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$/i.test(value);
         }, "Enter email in the form: phthinh_2609@gmail.com (Only used before @ special character: ._%+-)");
-        
 
         loadCustomers();
 
