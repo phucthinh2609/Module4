@@ -851,23 +851,6 @@
             } else {
                 App.SweetAleart.showAleartError("Sender ID and Receipent ID should different");
             }
-            
-            // $.ajax({
-            //         "type": "POST",
-            //         "url": "http://localhost:3000/transfers",
-            //         "data": transfer
-            //     })
-            //     .done((item) => {
-            //         let transactionAmount = Number(item.transferAmount) + (Number(item.transferAmount) * Number(10/100));
-
-            //         doIncrementBalance(receipent, item.transferAmount);
-            //         doReduceBalance(sender, transactionAmount);
-
-            //         $('#mdTransfer').modal('hide');
-            //     })
-            //     .fail((error) => {
-            //         App.SweetAleart.showAleartError("Transfer failed");
-            // })
         }
 
         function unbindAll() {

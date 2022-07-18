@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19cd265-4814-42a1-8257-68e9ee2f7ba9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/aminh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/ex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/index-location.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/json-server-main/banking-location.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/json-server-main/banking-location.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +217,7 @@
       <workItem from="1657267621085" duration="7147000" />
       <workItem from="1657511030083" duration="10481000" />
       <workItem from="1657529215002" duration="1240000" />
-      <workItem from="1657612403429" duration="4391000" />
+      <workItem from="1657612403429" duration="4987000" />
     </task>
     <servers />
   </component>
