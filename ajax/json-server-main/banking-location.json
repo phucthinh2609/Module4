@@ -13,7 +13,7 @@
         "wardId": "26575",
         "wardName": "Thị trấn Ngãi Giao"
       },
-      "balance": 100,
+      "balance": 35,
       "deleted": 0,
       "id": 1
     },
@@ -30,7 +30,7 @@
         "wardId": "12688",
         "wardName": "Thị trấn Đông Hưng"
       },
-      "balance": 100,
+      "balance": 250,
       "deleted": 0,
       "id": 2
     },
@@ -47,7 +47,7 @@
         "wardId": "11581",
         "wardName": "Thị trấn An Dương"
       },
-      "balance": 880,
+      "balance": 560,
       "deleted": 0,
       "id": 3
     },
@@ -79,7 +79,7 @@
         "wardId": "28360",
         "wardName": "Thị trấn Cái Bè"
       },
-      "balance": 0,
+      "balance": 90,
       "deleted": 0,
       "id": 5
     },
@@ -96,7 +96,7 @@
         "wardId": "11581",
         "wardName": "Thị trấn An Dương"
       },
-      "balance": 0,
+      "balance": 100,
       "deleted": 0,
       "id": 6
     },
@@ -321,6 +321,17 @@
       "deleted": "0",
       "updatedAt": "2022-7-15",
       "id": 3
+    },
+    {
+      "customerId": "6",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-18",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-18",
+      "id": 4
     }
   ],
   "withdraws": [
@@ -334,6 +345,17 @@
       "updatedBy": "1",
       "deleted": "0",
       "updatedAt": "2022-7-15"
+    },
+    {
+      "id": 2,
+      "customerId": "3",
+      "transactionAmount": "100",
+      "createdAt": "2022-7-18",
+      "createdBy": "1",
+      "udatedAt": "",
+      "updatedBy": "1",
+      "deleted": "0",
+      "updatedAt": "2022-7-18"
     }
   ],
   "transfers": [

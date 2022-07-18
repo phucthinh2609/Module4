@@ -106,11 +106,15 @@ class Withdraw {
 }
 
 class Transfer {
-    constructor(id, transferAmount,  senderId,  recipientId) {
+    constructor(id, fees = 10, feesAmount = 10/100, transferAmount, transactionAmount,  senderId,  recipientId) {
         this.id = id;
+        this.fees = fees;
+        this.feesAmount = feesAmount;
         this.transferAmount = transferAmount;
+        this.transactionAmount = transactionAmount;
         this.senderId = senderId;
         this.recipientId = recipientId;
+       
     }
 }
 

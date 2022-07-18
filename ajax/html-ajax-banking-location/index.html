@@ -1013,7 +1013,7 @@
                     "data": deposit
             })
             .done((item) => {
-                doIncrementBalance(customer, item.transactionAmount);
+                doIncrementBalance(customer, item.transactionAmount, "Deposit successful");
             })
             .fail((error) => {
                 App.SweetAleart.showAleartError("Deposit failed");
@@ -1043,7 +1043,7 @@
                     "data": withdraw
                     })
                     .done((item) => {
-                        doReduceBalance(customer, item.transactionAmount);
+                        doReduceBalance(customer, item.transactionAmount, "Withdraw successful");
                     })
                     .fail((error) => {
                         App.SweetAleart.showAleartError("Withdraw failed");
@@ -1056,56 +1056,107 @@
             
         }
 
+        // function doTransfer() {
+        //     let recipientId = $('#recipientNameTrf').val();
+        //     let senderId = $('#senderIdTrf').val();
+
+        //     if(recipientId != senderId) {
+        //         getCustomerById(recipientId).then(function(){
+        //             receipent = customer;
+    
+        //             getCustomerById(senderId).then(function(){
+        //                 sender = customer;
+    
+        //                 let transferAmount = +$('#transferAmountTrf').val();
+        //                 let fees = +$('#feesTrf').val()/100;
+        //                 let feesAmount = transferAmount * fees;
+        //                 let transactionAmount = Number(transferAmount) + Number(feesAmount);
+    
+        //                 if (sender.balance >= transactionAmount){
+
+        //                     delete transfer.id;
+        //                     transfer.transferAmount = transferAmount;
+        //                     transfer.senderId = senderId;
+        //                     transfer.recipientId = recipientId;
+        
+        //                     $.ajax({
+        //                         "type": "POST",
+        //                         "url": "http://localhost:3000/transfers",
+        //                         "data": transfer
+        //                     })
+        //                     .done((item) => {
+        //                         let transactionAmount = Number(item.transferAmount) + (Number(item.transferAmount) * Number(10/100));
+
+        //                         doIncrementBalance(receipent, item.transferAmount);
+        //                         doReduceBalance(sender, transactionAmount);
+
+        //                         $('#mdTransfer').modal('hide');
+        //                     })
+        //                     .fail((error) => {
+        //                         App.SweetAleart.showAleartError("Transfer failed");
+        //                 })
+        //                 }else {
+        //                     App.SweetAleart.showAleartError("Sender's balance not enough");
+        //                 }
+        //             })
+        //         })
+        //     } else {
+        //         App.SweetAleart.showAleartError("Sender ID and Receipent ID should different");
+        //     }
+        // }
+        
         function doTransfer() {
             let recipientId = $('#recipientNameTrf').val();
             let senderId = $('#senderIdTrf').val();
 
-            if(recipientId != senderId) {
-                getCustomerById(recipientId).then(function(){
-                    receipent = customer;
-    
-                    getCustomerById(senderId).then(function(){
-                        sender = customer;
-    
-                        let transferAmount = +$('#transferAmountTrf').val();
-                        let fees = +$('#feesTrf').val()/100;
-                        let feesAmount = transferAmount * fees;
-                        let transactionAmount = Number(transferAmount) + Number(feesAmount);
-    
-                        if (sender.balance >= transactionAmount){
+            let transferAmount = +$('#transferAmountTrf').val();
+            let fees = +$('#feesTrf').val()/100;
+            let feesAmount = transferAmount * fees;
+            let transactionAmount = Number(transferAmount) + Number(feesAmount);
 
+            if(recipientId != senderId) {
+                getCustomerById(senderId).then(function(){
+                    sender = customer;
+                    if (sender.balance >= transactionAmount){
+                        doReduceBalance(sender, transactionAmount, "Deducted from the sender")
+                        
+                        getCustomerById(recipientId).then(function(){
+                            receipent = customer;
+                            doIncrementBalance(receipent, transferAmount, "Added money for the recipient")
+        
                             delete transfer.id;
+                            transfer.fees = fees;
+                            transfer.feesAmount = feesAmount;
                             transfer.transferAmount = transferAmount;
+                            transfer.transactionAmount = transactionAmount;
                             transfer.senderId = senderId;
                             transfer.recipientId = recipientId;
         
                             $.ajax({
                                 "type": "POST",
-                                "url": "http://localhost:3000/transfers",
+                                "url": "http://localhost:3002/transfers",
                                 "data": transfer
                             })
                             .done((item) => {
-                                let transactionAmount = Number(item.transferAmount) + (Number(item.transferAmount) * Number(10/100));
-
-                                doIncrementBalance(receipent, item.transferAmount);
-                                doReduceBalance(sender, transactionAmount);
-
+    
                                 $('#mdTransfer').modal('hide');
                             })
                             .fail((error) => {
-                                App.SweetAleart.showAleartError("Transfer failed");
+                                doMinusBalanceOfRecipient(receipent, transferAmount);
+                                doRefundBalanceToSender(sender, transactionAmount);
+                                App.IziToast.showAleartError("Transfer failed");
+                            })
                         })
-                        }else {
-                            App.SweetAleart.showAleartError("Sender's balance not enough");
-                        }
-                    })
+
+                    }else {
+                        App.IziToast.showAleartError("Sender's balance not enough");
+                    }
                 })
             } else {
-                App.SweetAleart.showAleartError("Sender ID and Receipent ID should different");
+                App.IziToast.showAleartError("Sender ID and Receipent ID should different");
             }
         }
-
-        function doIncrementBalance(obj, transactionAmount) {
+        function doIncrementBalance(obj, transactionAmount, successAleart) {
             obj.balance = Number(obj.balance) + Number(transactionAmount);
 
             $.ajax({
@@ -1143,14 +1194,14 @@
                     handleClickRow();
 
                     $('#mdDeposit').modal('hide');
-                    App.SweetAleart.showAleartSuccess('Successful')
+                    App.IziToast.showAleartSuccess(successAleart)
                 })
                 .fail((error) => {
-                    App.SweetAleart.showAleartError('Customer invalid')
+                    App.IziToast.showAleartError('Customer invalid')
                 })
         }
 
-        function doReduceBalance(obj, transactionAmount) {
+        function doReduceBalance(obj, transactionAmount, successAleart) {
             obj.balance = Number(obj.balance) - Number(transactionAmount);
 
             $.ajax({
@@ -1187,10 +1238,99 @@
                 handleClickRow();
 
                 $('#mdWithdraw').modal('hide');
-                App.SweetAleart.showAleartSuccess('Successful')
+                App.IziToast.showAleartSuccess(successAleart)
             })
             .fail((error) => {
-                App.SweetAleart.showAleartError('Customer invalid')
+                App.IziToast.showAleartError('Customer invalid')
+            })
+        }
+
+        function doMinusBalanceOfRecipient(obj, transactionAmount) {
+            obj.balance = Number(obj.balance) - Number(transactionAmount);
+
+            $.ajax({
+                headers: {
+                    "accepts": "application/json",
+                    "content-type": "application/json"
+                },
+                
+                type: "PUT",
+                url: "http://localhost:3000/customers/" + obj.id,
+                data: JSON.stringify(obj)
+
+                })
+                .done((item) => {
+                    let str = `
+                        <tr id="tr_${item.id}" data-id="${item.id}">
+                            <td><span class="select-tab unselected"></span></td>
+                            <td class="text-center">${item.id}</td>
+                            <td>${item.fullName}</td>
+                            <td>${item.email}</td>
+                            <td class="text-center">${item.phone}</td>
+                            <td class="text-end num-space">${item.balance}</td>
+                            <td class="text-center">${item.locationRegion.provinceName}</td>
+                            <td class="text-center">${item.locationRegion.districtName}</td>
+                            <td class="text-center">${item.locationRegion.wardName}</td>
+                            <td class="text-center">${item.locationRegion.address}</td>
+                        </tr>
+                    `;
+
+                    let currentRow = $('#tr_' + item.id);
+
+                    currentRow.replaceWith(str);
+
+                    unbindAll();
+                    handleClickRow();
+
+                    $('#mdDeposit').modal('hide');
+                    App.IziToast.showAleartSuccess("Minused balance of recipient")
+                })
+                .fail((error) => {
+                    App.IziToast.showAleartError('Customer invalid')
+                })
+        }
+
+        function doRefundBalanceToSender(obj, transactionAmount) {
+            obj.balance = Number(obj.balance) + Number(transactionAmount);
+
+            $.ajax({
+                headers: {
+                    "accepts": "application/json",
+                    "content-type": "application/json"
+                },
+                
+                type: "PUT",
+                url: "http://localhost:3000/customers/" + obj.id,
+                data: JSON.stringify(obj)
+            })
+            .done((item) => {
+                let str = `
+                    <tr id="tr_${item.id}" data-id="${item.id}">
+                        <td><span class="select-tab unselected"></span></td>
+                        <td class="text-center">${item.id}</td>
+                        <td>${item.fullName}</td>
+                        <td>${item.email}</td>
+                        <td class="text-center">${item.phone}</td>
+                        <td class="text-end num-space">${item.balance}</td>
+                        <td class="text-center">${item.locationRegion.provinceName}</td>
+                        <td class="text-center">${item.locationRegion.districtName}</td>
+                        <td class="text-center">${item.locationRegion.wardName}</td>
+                        <td class="text-center">${item.locationRegion.address}</td>
+                    </tr>
+                `;
+
+                let currentRow = $('#tr_' + item.id);
+
+                currentRow.replaceWith(str);
+
+                unbindAll();
+                handleClickRow();
+
+                $('#mdWithdraw').modal('hide');
+                App.IziToast.showAleartSuccess("Refunded balance to sender")
+            })
+            .fail((error) => {
+                App.IziToast.showAleartError('Customer invalid')
             })
         }
 
