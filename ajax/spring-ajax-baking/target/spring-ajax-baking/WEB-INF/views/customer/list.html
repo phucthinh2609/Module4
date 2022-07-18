@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:replace="/layout/head :: head" />
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="row">
+                <div class="col-sm-5">
+                    <h1>List of customers</h1>
+                </div>
+                <div class="col-sm-7">
+                    <a class="btn btn-outline-light create-modal"><i class="fa fa-plus-square-o" aria-hidden="true"></i> <span>Add New Customer</span></a>
+                    <a href="/transfers" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i> <span>Transfer money Information</span></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="box-body">
+
+            <input type="hidden" id="currentRow"/>
+
+            <table id="tbListCustomers" class="table table-hover">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>#</th>
+                    <th>FullName</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Balance</th>
+                    <th>Province</th>
+                    <th>District</th>
+                    <th>Ward</th>
+                    <th>Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <td></td>
+                    <td>1</td>
+                    <td>NVA</td>
+                    <td>nva@gmail.com</td>
+                    <td>01234</td>
+                    <td>0</td>
+                    <td>Hue</td>
+                    <td>Tp.Hue</td>
+                    <td>Phu Nhuan</td>
+                    <td>28 NTP</td>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <th:block th:replace="/customer/modal-create :: modal-create" />
+    <th:block th:replace="/layout/script :: script" />
+
+    <script>
+        $('.create-modal').on('click', () => {
+            $('#modalCreateCustomer').modal('show');
+        })
+
+        function drawProvinces() {
+            $.ajax({
+                headers: {
+                    accepts: "application/json",
+                    "content-type": "application/json"
+                },
+                type: "POST",
+                url: "http://localhost:3000/customers" ,
+                data: JSON.stringify(customer)
+
+            })
+        }
+    </script>
+
+</body>
+</html>

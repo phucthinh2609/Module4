@@ -1,9 +1,12 @@
 {
   "transfers": [
     {
+      "fees": "0.1",
+      "feesAmount": "10",
       "transferAmount": "100",
-      "senderId": "",
-      "recipientId": "4",
+      "transactionAmount": "110",
+      "senderId": "3",
+      "recipientId": "5",
       "id": 1
     },
     {
@@ -32,6 +35,24 @@
       "senderId": "1",
       "recipientId": "2",
       "id": 4
+    },
+    {
+      "fees": "0.1",
+      "feesAmount": "5.5",
+      "transferAmount": "55",
+      "transactionAmount": "60.5",
+      "senderId": "1",
+      "recipientId": "2",
+      "id": 5
+    },
+    {
+      "fees": "0.1",
+      "feesAmount": "5",
+      "transferAmount": "50",
+      "transactionAmount": "55",
+      "senderId": "2",
+      "recipientId": "1",
+      "id": 6
     }
   ]
 }

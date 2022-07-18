@@ -7,7 +7,7 @@ class App {
                 icon: 'success',
                 title: title,
                 showConfirmButton: false,
-                timer: 1500
+                timer: 50000
             })
         }
 
@@ -17,7 +17,7 @@ class App {
                 icon: 'error',
                 title: title,
                 showConfirmButton: false,
-                timer: 1500
+                timer: 50000
             })
         }
 

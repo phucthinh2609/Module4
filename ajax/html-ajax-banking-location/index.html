@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-sm-7">
                     <a class="btn btn-outline-light create-modal"><i class="fa fa-plus-square-o" aria-hidden="true"></i> <span>Add New Customer</span></a>
-                    <a href="/transfers" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i> <span>Transfer money Information</span></a>
+                    <a href="/transfers.html" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i> <span>Transfer money Information</span></a>
                 </div>
             </div>
         </header>
@@ -794,68 +794,85 @@
             console.log(count);
 
             if(count == 0){
-                let address = $('#address').val();
-                let provinceName = $('#province :selected').text();
-                let districtName = $('#district :selected').text();
-                let wardName = $('#ward :selected').text(); 
-
-                let fullName = $('#fullName').val();
                 let email = $('#email').val();
-                let phone = $('#phone').val();
+                
+                getAllCustomers().then(function (){
+                    $.each(customers, (i, item) => {
+                        if(item.email == email){
+                            flag = true;
+                        }
+                    })
 
-                locationRegion.address = address;
-                locationRegion.provinceId = provinceId;
-                locationRegion.provinceName = provinceName;
-                locationRegion.districtId = districtId;
-                locationRegion.districtName = districtName;
-                locationRegion.wardId = wardId;
-                locationRegion.wardName = wardName;            
+                    if(flag) {
+                    App.SweetAleart.showAleartError('Email has been duplicated');
+                    } else {
+                        let address = $('#address').val();
+                        let provinceName = $('#province :selected').text();
+                        let districtName = $('#district :selected').text();
+                        let wardName = $('#ward :selected').text(); 
 
-                delete customer.id;
-                customer.fullName = fullName;
-                customer.email = email;
-                customer.phone = phone;
-                customer.locationRegion = locationRegion;
-                customer.balance = 0;
+                        let fullName = $('#fullName').val();
+                        let phone = $('#phone').val();
 
-                $.ajax({
-                    headers: {
-                        accepts: "application/json",
-                        "content-type": "application/json"
-                    },
-                    
-                    type: "POST",
-                    url: "http://localhost:3000/customers" ,
-                    data: JSON.stringify(customer)
+                        locationRegion.address = address;
+                        locationRegion.provinceId = provinceId;
+                        locationRegion.provinceName = provinceName;
+                        locationRegion.districtId = districtId;
+                        locationRegion.districtName = districtName;
+                        locationRegion.wardId = wardId;
+                        locationRegion.wardName = wardName;            
 
+                        delete customer.id;
+                        customer.fullName = fullName;
+                        customer.email = email;
+                        customer.phone = phone;
+                        customer.locationRegion = locationRegion;
+                        customer.balance = 0;
+
+                        $.ajax({
+                            headers: {
+                                accepts: "application/json",
+                                "content-type": "application/json"
+                            },
+                            
+                            type: "POST",
+                            url: "http://localhost:3000/customers" ,
+                            data: JSON.stringify(customer)
+
+                        })
+                        .done((item) => {
+                            let str = `
+                                <tr id="tr_${item.id}" data-id="${item.id}">
+                                    <td><span class="select-tab unselected"></span></td>
+                                    <td class="text-center">${item.id}</td>
+                                    <td>${item.fullName}</td>
+                                    <td>${item.email}</td>
+                                    <td class="text-center">${item.phone}</td>
+                                    <td class="text-end num-space">${item.balance}</td>
+                                    <td class="text-center">${item.locationRegion.provinceName}</td>
+                                    <td class="text-center">${item.locationRegion.districtName}</td>
+                                    <td class="text-center">${item.locationRegion.wardName}</td>
+                                    <td class="text-center">${item.locationRegion.address}</td>
+                                </tr>
+                            `;
+                            $('#tbCustomer tbody').append(str);
+
+                            $('#mdCreate').modal('hide');
+
+                            App.SweetAleart.showAleartSuccess('Created successful')
+
+                            unbindAll();
+                            handleClickRow();
+                        })
+                        .fail((error) => {
+                            App.SweetAleart.showAleartError('Created fail')
+                        })
+                    }
                 })
-                .done((item) => {
-                    let str = `
-                        <tr id="tr_${item.id}" data-id="${item.id}">
-                            <td><span class="select-tab unselected"></span></td>
-                            <td class="text-center">${item.id}</td>
-                            <td>${item.fullName}</td>
-                            <td>${item.email}</td>
-                            <td class="text-center">${item.phone}</td>
-                            <td class="text-end num-space">${item.balance}</td>
-                            <td class="text-center">${item.locationRegion.provinceName}</td>
-                            <td class="text-center">${item.locationRegion.districtName}</td>
-                            <td class="text-center">${item.locationRegion.wardName}</td>
-                            <td class="text-center">${item.locationRegion.address}</td>
-                        </tr>
-                    `;
-                    $('#tbCustomer tbody').append(str);
 
-                    $('#mdCreate').modal('hide');
+                
 
-                    App.SweetAleart.showAleartSuccess('Created successful')
-
-                    unbindAll();
-                    handleClickRow();
-                })
-                .fail((error) => {
-                    App.SweetAleart.showAleartError('Created fail')
-                })
+                
             }
         }
 
@@ -925,70 +942,85 @@
             flag = false;
             
             if(count == 0) {
-                let provinceName = $('#provinceUp :selected').text();
-                let districtName = $('#districtUp :selected').text();
-                let wardName = $('#wardUp :selected').text(); 
-                let address = $('#addressUp').val();
-
-                let fullName = $('#fullNameUp').val();
                 let email = $('#emailUp').val();
-                let phone = $('#phoneUp').val();
+                let currentEmail = customer.email;
 
-
-                locationRegion.address = address;
-                locationRegion.provinceId = provinceId;
-                locationRegion.provinceName = provinceName;
-                locationRegion.districtId = districtId;
-                locationRegion.districtName = districtName;
-                locationRegion.wardId = wardId;
-                locationRegion.wardName = wardName; 
-
-                customer.fullName = fullName;
-                customer.email = email;
-                customer.phone = phone;
-                customer.locationRegion = locationRegion;
-
-                $.ajax({
-                    headers: {
-                        "accepts": "application/json",
-                        "content-type": "application/json"
-                    },
+                getAllCustomers().then(function (){
+                    $.each(customers, (i, item) => {
+                        if(email == item.email && email != currentEmail){
+                            flag = true;
+                        }
+                    })
                     
-                    type: "PUT",
-                    url: "http://localhost:3000/customers/" + customer.id,
-                    data: JSON.stringify(customer)
-                })
-                .done((item) => {
-                    let str = `
-                        <tr id="tr_${item.id}" data-id="${item.id}">
-                            <td><span class="select-tab unselected"></span></td>
-                            <td class="text-center">${item.id}</td>
-                            <td>${item.fullName}</td>
-                            <td>${item.email}</td>
-                            <td class="text-center">${item.phone}</td>
-                            <td class="text-end num-space">${item.balance}</td>
-                            <td class="text-center">${item.locationRegion.provinceName}</td>
-                            <td class="text-center">${item.locationRegion.districtName}</td>
-                            <td class="text-center">${item.locationRegion.wardName}</td>
-                            <td class="text-center">${item.locationRegion.address}</td>
-                        </tr>
-                    `;
+                    if(flag) {
+                    App.SweetAleart.showAleartError('Email has been duplicated');
 
-                    let currentRow = $('#tr_' + item.id);
+                    } else {
+                        let provinceName = $('#provinceUp :selected').text();
+                        let districtName = $('#districtUp :selected').text();
+                        let wardName = $('#wardUp :selected').text(); 
+                        let address = $('#addressUp').val();
 
-                    currentRow.replaceWith(str);
+                        let fullName = $('#fullNameUp').val();
+                        let phone = $('#phoneUp').val();
 
-                    $('#mdEdit').modal('hide');
 
-                    App.SweetAleart.showAleartSuccess('Updated customer infomation successful')
+                        locationRegion.address = address;
+                        locationRegion.provinceId = provinceId;
+                        locationRegion.provinceName = provinceName;
+                        locationRegion.districtId = districtId;
+                        locationRegion.districtName = districtName;
+                        locationRegion.wardId = wardId;
+                        locationRegion.wardName = wardName; 
 
-                    unbindAll();
-                    handleClickRow();
-                })
+                        customer.fullName = fullName;
+                        customer.email = email;
+                        customer.phone = phone;
+                        customer.locationRegion = locationRegion;
 
-                .fail((error) => {
-                    App.SweetAleart.showAleartError('Updated customer infomation failed')
+                        $.ajax({
+                            headers: {
+                                "accepts": "application/json",
+                                "content-type": "application/json"
+                            },
+                            
+                            type: "PUT",
+                            url: "http://localhost:3000/customers/" + customer.id,
+                            data: JSON.stringify(customer)
+                        })
+                        .done((item) => {
+                            let str = `
+                                <tr id="tr_${item.id}" data-id="${item.id}">
+                                    <td><span class="select-tab unselected"></span></td>
+                                    <td class="text-center">${item.id}</td>
+                                    <td>${item.fullName}</td>
+                                    <td>${item.email}</td>
+                                    <td class="text-center">${item.phone}</td>
+                                    <td class="text-end num-space">${item.balance}</td>
+                                    <td class="text-center">${item.locationRegion.provinceName}</td>
+                                    <td class="text-center">${item.locationRegion.districtName}</td>
+                                    <td class="text-center">${item.locationRegion.wardName}</td>
+                                    <td class="text-center">${item.locationRegion.address}</td>
+                                </tr>
+                            `;
 
+                            let currentRow = $('#tr_' + item.id);
+
+                            currentRow.replaceWith(str);
+
+                            $('#mdEdit').modal('hide');
+
+                            App.SweetAleart.showAleartSuccess('Updated customer infomation successful')
+
+                            unbindAll();
+                            handleClickRow();
+                        })
+
+                        .fail((error) => {
+                            App.SweetAleart.showAleartError('Updated customer infomation failed')
+
+                        })
+                    }
                 })
             }
         }
@@ -1055,55 +1087,6 @@
 
             
         }
-
-        // function doTransfer() {
-        //     let recipientId = $('#recipientNameTrf').val();
-        //     let senderId = $('#senderIdTrf').val();
-
-        //     if(recipientId != senderId) {
-        //         getCustomerById(recipientId).then(function(){
-        //             receipent = customer;
-    
-        //             getCustomerById(senderId).then(function(){
-        //                 sender = customer;
-    
-        //                 let transferAmount = +$('#transferAmountTrf').val();
-        //                 let fees = +$('#feesTrf').val()/100;
-        //                 let feesAmount = transferAmount * fees;
-        //                 let transactionAmount = Number(transferAmount) + Number(feesAmount);
-    
-        //                 if (sender.balance >= transactionAmount){
-
-        //                     delete transfer.id;
-        //                     transfer.transferAmount = transferAmount;
-        //                     transfer.senderId = senderId;
-        //                     transfer.recipientId = recipientId;
-        
-        //                     $.ajax({
-        //                         "type": "POST",
-        //                         "url": "http://localhost:3000/transfers",
-        //                         "data": transfer
-        //                     })
-        //                     .done((item) => {
-        //                         let transactionAmount = Number(item.transferAmount) + (Number(item.transferAmount) * Number(10/100));
-
-        //                         doIncrementBalance(receipent, item.transferAmount);
-        //                         doReduceBalance(sender, transactionAmount);
-
-        //                         $('#mdTransfer').modal('hide');
-        //                     })
-        //                     .fail((error) => {
-        //                         App.SweetAleart.showAleartError("Transfer failed");
-        //                 })
-        //                 }else {
-        //                     App.SweetAleart.showAleartError("Sender's balance not enough");
-        //                 }
-        //             })
-        //         })
-        //     } else {
-        //         App.SweetAleart.showAleartError("Sender ID and Receipent ID should different");
-        //     }
-        // }
         
         function doTransfer() {
             let recipientId = $('#recipientNameTrf').val();
@@ -1142,9 +1125,9 @@
                                 $('#mdTransfer').modal('hide');
                             })
                             .fail((error) => {
+                                App.IziToast.showAleartError("Transfer failed");
                                 doMinusBalanceOfRecipient(receipent, transferAmount);
                                 doRefundBalanceToSender(sender, transactionAmount);
-                                App.IziToast.showAleartError("Transfer failed");
                             })
                         })
 
@@ -1156,6 +1139,7 @@
                 App.IziToast.showAleartError("Sender ID and Receipent ID should different");
             }
         }
+
         function doIncrementBalance(obj, transactionAmount, successAleart) {
             obj.balance = Number(obj.balance) + Number(transactionAmount);
 
