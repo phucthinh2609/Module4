@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import java.math.BigDecimal;
 @Setter
 @Entity
 @Table(name = "transfers")
-public class Transfer extends BaseEntities{
+public class Transfer extends BaseEntities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

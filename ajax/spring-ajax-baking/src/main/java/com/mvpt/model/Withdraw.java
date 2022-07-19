@@ -9,13 +9,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import java.math.BigDecimal;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "withdraws")
-public class Withdraw extends BaseEntities{
+public class Withdraw extends BaseEntities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

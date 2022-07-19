@@ -1,6 +1,8 @@
 package com.mvpt.model;
 
+import com.mvpt.model.dto.LocationRegionDTO;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
@@ -10,35 +12,45 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "location_region")
-public class LocationRegion {
+@Accessors(chain = true)
+public class LocationRegion extends BaseEntities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "province_id")
-    private long provinceId;
+    private String provinceId;
 
     @Column(name = "province_name")
     private String provinceName;
 
-    @Column(name = "district_idd")
-    private long districtId;
+    @Column(name = "district_id")
+    private String districtId;
 
     @Column(name = "district_name")
     private String districtName;
 
     @Column(name = "ward_id")
-    private long wardId;
+    private String wardId;
 
     @Column(name = "ward_name")
     private String wardName;
 
     private String address;
 
-    @OneToOne (mappedBy = "locationRegion")
+    @OneToOne(mappedBy = "locationRegion")
     private Customer customer;
 
-
+    public LocationRegionDTO toLocationRegionDTO() {
+        return new LocationRegionDTO()
+                .setProvinceId(provinceId)
+                .setProvinceName(provinceName)
+                .setDistrictId(districtId)
+                .setDistrictName(districtName)
+                .setWardId(wardId)
+                .setWardName(wardName)
+                .setAddress(address);
+    }
 
 }

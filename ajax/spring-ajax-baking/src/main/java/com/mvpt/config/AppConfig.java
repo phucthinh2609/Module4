@@ -122,10 +122,4 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
     }
-
-    //    @Bean
-//    public CustomerService customerService() {
-//        return new CustomerServiceImpl();
-//    }
-
 }

@@ -1,7 +1,7 @@
 package com.mvpt.service.deposit;
 
 import com.mvpt.model.Deposit;
-import com.mvpt.service.GeneralService;
+import com.mvpt.service.IGeneralService;
 
-public interface DepositService extends GeneralService<Deposit> {
+public interface DepositService extends IGeneralService<Deposit> {
 }

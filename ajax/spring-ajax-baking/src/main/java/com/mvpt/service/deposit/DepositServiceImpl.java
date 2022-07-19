@@ -1,33 +1,33 @@
 package com.mvpt.service.deposit;
 
+
 import com.mvpt.model.Deposit;
 import com.mvpt.repository.DepositRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
-public class DepositServiceImpl implements DepositService{
+public class DepositServiceImpl implements DepositService {
+
     @Autowired
-    DepositRepository depositRepository;
+    private DepositRepository depositRepository;
 
     @Override
     public List<Deposit> findAll() {
-        return depositRepository.findAll();
+        return null;
     }
 
     @Override
     public Optional<Deposit> findById(Long id) {
-        return depositRepository.findById(id);
+        return Optional.empty();
     }
 
     @Override
     public Deposit getById(Long id) {
-        return depositRepository.getById(id);
+        return null;
     }
 
     @Override

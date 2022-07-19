@@ -1,15 +1,20 @@
 package com.mvpt.controller;
 
+
 import com.mvpt.model.Customer;
 import com.mvpt.model.Deposit;
 import com.mvpt.model.Transfer;
-import com.mvpt.model.Withdraw;
+import com.mvpt.model.dto.DepositDTO;
+import com.mvpt.model.dto.TransferDTO;
 import com.mvpt.service.customer.CustomerService;
 import com.mvpt.service.deposit.DepositService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -25,29 +30,33 @@ public class CustomerController {
     private DepositService depositService;
 
     @GetMapping
-    public ModelAndView list(){
-        ModelAndView modelAndView = new ModelAndView("/customer/list");
-//        List<Customer> customers = customerService.findAllByDeletedFalse();
-//        modelAndView.addObject("customers", customers);
-
+    public ModelAndView showListPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/list");
         return modelAndView;
     }
 
     @GetMapping("/create")
-    public ModelAndView showCreatePage(){
-        ModelAndView modelAndView = new ModelAndView("/create");
+    public ModelAndView showCreatePage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/create");
+
         modelAndView.addObject("customer", new Customer());
+
         return modelAndView;
     }
 
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditPage(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("/update");
+    public ModelAndView showEditPage(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/update");
+
         Optional<Customer> customer = customerService.findById(id);
 
-        if (customer.isPresent()){
-            modelAndView.addObject("customer", customer.get());
-        }else {
+        if (customer.isPresent()) {
+            modelAndView.addObject("customer", customer);
+        }
+        else {
             modelAndView.addObject("customer", new Customer());
         }
 
@@ -55,122 +64,115 @@ public class CustomerController {
     }
 
     @GetMapping("/deposit/{id}")
-    public ModelAndView showDepositPage(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("/deposit");
+    public ModelAndView showDepositPage(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/deposit");
+
         Optional<Customer> customer = customerService.findById(id);
 
-        if (customer.isPresent()){
-            modelAndView.addObject("customer", customer.get());
-        }else {
+        if (customer.isPresent()) {
+            modelAndView.addObject("customer", customer);
+        }
+        else {
             modelAndView.addObject("customer", new Customer());
         }
 
         modelAndView.addObject("deposit", new Deposit());
-
-        return modelAndView;
-    }
-
-    @GetMapping("/withdraw/{id}")
-    public ModelAndView showWithdrawPage(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("/withdraw");
-        Optional<Customer> customer = customerService.findById(id);
-
-        if (customer.isPresent()){
-            modelAndView.addObject("customer", customer.get());
-        }else {
-            modelAndView.addObject("customer", new Customer());
-        }
-
-        modelAndView.addObject("withdraw", new Withdraw());
 
         return modelAndView;
     }
 
     @GetMapping("/transfer/{id}")
-    public ModelAndView showTransferPage(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("/transfer");
+    public ModelAndView showTransferPage(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/transfer");
+
         Optional<Customer> sender = customerService.findById(id);
-        List<Customer> customers = customerService.findAllByIdNot(id);
 
-        if (sender.isPresent()){
-            modelAndView.addObject("sender", sender.get());
-            modelAndView.addObject("customers", customers);
-        }else {
-            modelAndView.addObject("sender", new Customer());
+        if (sender.isPresent()) {
+
+            TransferDTO transferDTO = new TransferDTO();
+            transferDTO.setSenderId(sender.get().getId().toString());
+            transferDTO.setSenderName(sender.get().getFullName());
+            transferDTO.setEmail(sender.get().getEmail());
+            transferDTO.setBalance(sender.get().getBalance().toString());
+
+
+            modelAndView.addObject("transferDTO", transferDTO);
+
+            List<Customer> recipients = customerService.findAllByIdNot(sender.get().getId());
+
+            modelAndView.addObject("recipients", recipients);
         }
-
-        Transfer transfer = new Transfer();
-        transfer.setSender(sender.get());
-        transfer.setFees(10);
-        modelAndView.addObject("transfer", transfer);
+        else {
+            modelAndView.addObject("transferDTO", new TransferDTO());
+            modelAndView.addObject("recipients", null);
+        }
 
         return modelAndView;
     }
 
-    @GetMapping("/delete/{id}")
-    public String delele(@PathVariable Long id){
-        customerService.remove(id);
-
-        return "redirect:/customers";
-    }
-
     @PostMapping("/create")
-    public ModelAndView create(@ModelAttribute Customer customer){
-        ModelAndView modelAndView = new ModelAndView("/create");
+    public ModelAndView doCreate(@ModelAttribute Customer customer) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/create");
+
         try {
             customer.setBalance(BigDecimal.ZERO);
             customerService.save(customer);
 
-            modelAndView.addObject("success", "Created a new customer successful");
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-
+            modelAndView.addObject("success", "New customer add success");
+        } catch (Exception e) {
+            e.printStackTrace();
             modelAndView.addObject("error", "Bad data");
         }
+
+        modelAndView.addObject("customer", new Customer());
+
         return modelAndView;
     }
 
     @PostMapping("/edit/{id}")
-    public ModelAndView update(@PathVariable Long id, @ModelAttribute Customer customer){
-        ModelAndView modelAndView = new ModelAndView("/update");
-        System.out.println(customer);
+    public ModelAndView doUpdate(@PathVariable Long id, @ModelAttribute Customer customer) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/update");
+
         try {
             customer.setId(id);
             customerService.save(customer);
 
             modelAndView.addObject("customer", customer);
-            modelAndView.addObject("success", "Updated a new customer successful");
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-
-            modelAndView.addObject("customer", new Customer());
+            modelAndView.addObject("success", "Update customer success");
+        } catch (Exception e) {
+            e.printStackTrace();
             modelAndView.addObject("error", "Bad data");
+            modelAndView.addObject("customer", new Customer());
         }
+
         return modelAndView;
     }
 
     @PostMapping("/deposit/{id}")
-    public ModelAndView deposit(@PathVariable Long id, @ModelAttribute Deposit deposit){
-        ModelAndView modelAndView = new ModelAndView("/deposit");
+    public ModelAndView doDeposit(@PathVariable Long id, @ModelAttribute DepositDTO depositDTO) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/deposit");
 
-        Optional<Customer> customerOptional = customerService.findById(id);
+        Optional<Customer> optionalCustomer = customerService.findById(id);
 
-        if (customerOptional.isPresent()){
+        if (optionalCustomer.isPresent()) {
             try {
-                customerService.deposit(customerOptional.get(), deposit);
+                customerService.doDeposit(depositDTO);
 
-                modelAndView.addObject("success", "Deposited successful");
-                modelAndView.addObject("customer", customerService.findById(id));
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
+                modelAndView.addObject("customer", optionalCustomer.get());
+                modelAndView.addObject("success", "Deposit success");
+            } catch (Exception e) {
+                e.printStackTrace();
                 modelAndView.addObject("error", "Bad data");
+                modelAndView.addObject("customer", new Customer());
             }
-
-        } else {
-            modelAndView.addObject("error", "Id invalid");
+        }
+        else {
+            modelAndView.addObject("error", "Invalid Id");
             modelAndView.addObject("customer", new Customer());
         }
 
@@ -179,85 +181,86 @@ public class CustomerController {
         return modelAndView;
     }
 
-    @PostMapping("/withdraw/{id}")
-    public ModelAndView withdraw(@PathVariable Long id, @ModelAttribute Withdraw withdraw){
-        ModelAndView modelAndView = new ModelAndView("/withdraw");
-        Optional<Customer> customerOptional = customerService.findById(id);
-
-        if (customerOptional.isPresent()){
-            try {
-                customerService.withdraw(customerOptional.get(), withdraw);
-
-                modelAndView.addObject("success", "Withdraw successful");
-                modelAndView.addObject("customer", customerService.findById(id));
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                modelAndView.addObject("error", "Bad data");
-            }
-
-        } else {
-            modelAndView.addObject("error", "Id invalid");
-            modelAndView.addObject("customer", new Customer());
-        }
-
-        modelAndView.addObject("withdraw", new Withdraw());
-
-        return modelAndView;
-    }
-
     @PostMapping("/transfer/{senderId}")
-    public ModelAndView transfer(@PathVariable Long senderId, @ModelAttribute Transfer transfer){
-        ModelAndView modelAndView = new ModelAndView("/transfer");
+    public ModelAndView doTransfer(@PathVariable Long senderId, @Validated @ModelAttribute TransferDTO transferDTO, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/customer/transfer");
+
+        if (bindingResult.hasFieldErrors()) {
+            modelAndView.addObject("hasError", true);
+            modelAndView.addObject("recipients", customerService.findAllByIdNot(senderId));
+            return modelAndView;
+        }
 
         Optional<Customer> senderOptional = customerService.findById(senderId);
-        BigDecimal currentBalance = senderOptional.get().getBalance();
 
-        if (senderOptional.isPresent()){
-            Optional<Customer> recipientOptional = customerService.findById(transfer.getRecipient().getId());
+        if (senderOptional.isPresent()) {
 
-            if (recipientOptional.isPresent()){
-                if (!senderOptional.get().getId().equals(recipientOptional.get().getId())) {
-                    long fees = transfer.getFees();
-                    BigDecimal transferAmount = transfer.getTransferAmount();
-                    BigDecimal feesAmount = transferAmount.multiply(BigDecimal.valueOf(fees)).divide(BigDecimal.valueOf(100));
-                    BigDecimal transactionAmount = feesAmount.add(transferAmount);
+            Long recipientId = Long.parseLong(transferDTO.getRecipientId());
 
-                    if (currentBalance.compareTo(transactionAmount) >=0){
-                        transfer.setFees(fees);
-                        transfer.setFeesAmount(feesAmount);
-                        transfer.setTransferAmount(transferAmount);
-                        transfer.setTransactionAmount(transactionAmount);
-                        transfer.setSender(senderOptional.get());
-                        transfer.setRecipient(recipientOptional.get());
+            Optional<Customer> recipientOptional = customerService.findById(recipientId);
 
-                        customerService.transfer(transfer);
-
-                        modelAndView.addObject("sender", customerService.findById(senderId));
-                    }
-
-                } else {
-                    modelAndView.addObject("error", "Recipient id required different with Sender id");
+            if (recipientOptional.isPresent()) {
+                if (senderOptional.get().getId().equals(recipientOptional.get().getId())) {
+                    modelAndView.addObject("error", "Invalid Sender and Recipient information");
                     modelAndView.addObject("sender", new Customer());
                 }
+                else {
+                    BigDecimal currentBalance = senderOptional.get().getBalance();
+                    BigDecimal transferAmount = new BigDecimal(transferDTO.getTransferAmount());
+                    int fees = 10;
+                    BigDecimal feesAmount = transferAmount.multiply(BigDecimal.valueOf(fees)).divide(BigDecimal.valueOf(100));
+                    BigDecimal transactionAmount = transferAmount.add(feesAmount);
 
-            }else{
-                modelAndView.addObject("error", "Recipient id invalid");
-                modelAndView.addObject("sender", new Customer());
+                    if (currentBalance.compareTo(transactionAmount) >= 0) {
+
+                        Transfer transfer = new Transfer();
+
+                        transfer.setId(0l);
+                        transfer.setSender(senderOptional.get());
+                        transfer.setRecipient(recipientOptional.get());
+                        transfer.setTransferAmount(transferAmount);
+                        transfer.setFees(10);
+                        transfer.setFeesAmount(feesAmount);
+                        transfer.setTransactionAmount(transactionAmount);
+
+                        try {
+                            customerService.doTransfer(transfer);
+
+                            TransferDTO newTransferDTO = new TransferDTO();
+                            transferDTO.setSenderId(senderOptional.get().getId().toString());
+                            transferDTO.setSenderName(senderOptional.get().getFullName());
+                            transferDTO.setEmail(senderOptional.get().getEmail());
+                            transferDTO.setBalance(senderOptional.get().getBalance().toString());
+
+                            Optional<Customer> sender = customerService.findById(senderId);
+
+                            modelAndView.addObject("transferDTO", newTransferDTO);
+
+                            List<Customer> recipients = customerService.findAllByIdNot(sender.get().getId());
+
+                            modelAndView.addObject("recipients", recipients);
+                        } catch (Exception e) {
+                            modelAndView.addObject("error", "hệ thống bị lỗi");
+                        }
+                    }
+                    else {
+                        modelAndView.addObject("error", "Sender balance not enough to transfer transaction");
+                        modelAndView.addObject("transferDTO", new TransferDTO());
+                    }
+                }
             }
-
-        } else {
-            modelAndView.addObject("error", "Sender id invalid");
-            modelAndView.addObject("sender", new Customer());
+            else {
+                modelAndView.addObject("error", "Invalid Recipient information");
+                modelAndView.addObject("transferDTO", new TransferDTO());
+            }
         }
-
-        modelAndView.addObject("customers", customerService.findAllByIdNot(senderId));
-        modelAndView.addObject("transfer", new Transfer());
+        else {
+            modelAndView.addObject("error", "Invalid Sender information");
+            modelAndView.addObject("transferDTO", new TransferDTO());
+        }
 
         return modelAndView;
     }
-
-
-
 
 }

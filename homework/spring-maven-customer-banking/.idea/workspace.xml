@@ -10,26 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19cd265-4814-42a1-8257-68e9ee2f7ba9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/controller/rest/CustomerRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/model/LocationRegion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/repository/LocationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/service/locationRegion/LocationRegionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/service/locationRegion/LocationRegionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/WEB-INF/views/customer/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/WEB-INF/views/customer/modal-create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/WEB-INF/views/layout/head.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/WEB-INF/views/layout/script.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/css/sweetalert2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/font-awesome/v.4.7.0/css/font-awesome-0.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/js/jquery-3.6.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/js/jquery.validate-1.19.3.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/js/popper-v1.16.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/webapp/assets/js/sweetalert2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ajax/json-server-main/banking-location.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/json-server-main/banking-location.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ajax/transfer-server/transfer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/transfer-server/transfer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/transfers.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/html-ajax-banking-location/transfers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/controller/rest/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/controller/rest/CustomerRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/classes/com/mvpt/controller/rest/CustomerRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/classes/com/mvpt/controller/rest/CustomerRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/controller/rest/CustomerRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/controller/rest/CustomerRestController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +220,8 @@
       <workItem from="1657529215002" duration="1240000" />
       <workItem from="1657612403429" duration="4987000" />
       <workItem from="1658131492399" duration="373000" />
-      <workItem from="1658131898736" duration="934000" />
+      <workItem from="1658131898736" duration="1543000" />
+      <workItem from="1658152091226" duration="124000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
-//@EntityListeners(AuditingEntityListener.class)
+
 @Getter
 @Setter
 @MappedSuperclass

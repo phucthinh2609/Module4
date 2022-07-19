@@ -702,11 +702,11 @@
 
                 getDistrictsByProvinceId(province_id).then(() => {
                     drawDistricts(districts, '#district');
-                })
 
-                getWardsByDistrictId(districts[0].district_id).then(() => {
-                    drawWards(wards, '#ward');
-                })  
+                    getWardsByDistrictId(districts[0].district_id).then(() => {
+                        drawWards(wards, '#ward');
+                    })  
+                })
             })
 
             $('#district').on('change', () => {
@@ -724,10 +724,10 @@
 
                 getDistrictsByProvinceId(province_id).then(() => {
                     drawDistricts(districts, '#districtUp');
-                })
 
-                getWardsByDistrictId(districts[0].district_id).then(() => {
-                    drawWards(wards, '#wardUp');
+                    getWardsByDistrictId(districts[0].district_id).then(() => {
+                        drawWards(wards, '#wardUp');
+                    })
                 })
             })
 
