@@ -9,6 +9,7 @@ import com.mvpt.model.Customer;
 import com.mvpt.model.Deposit;
 import com.mvpt.model.dto.CustomerDTO;
 import com.mvpt.model.dto.DepositDTO;
+import com.mvpt.model.dto.TransferDTO;
 import com.mvpt.model.dto.WithdrawDTO;
 import com.mvpt.service.customer.CustomerService;
 import com.mvpt.service.deposit.DepositService;
@@ -23,6 +24,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -55,7 +59,6 @@ public class CustomerRestController {
         Optional<Customer> customerOptional = customerService.findById(id);
 
         if (!customerOptional.isPresent()){
-//            return new ResponseEntity<>(customerOptional.get(), HttpStatus.OK);
             throw new ResourceNotFoundException("Invalid customer Id");
         }
 
@@ -63,7 +66,11 @@ public class CustomerRestController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> doCreate(@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<?> doCreate(@Validated @RequestBody CustomerDTO customerDTO, BindingResult bindingResult) {
+
+        if (bindingResult.hasFieldErrors()) {
+            return appUtil.mapErrorToResponse(bindingResult);
+        }
 
         customerDTO.setId(0L);
         customerDTO.setBalance(new BigDecimal(0L));
@@ -107,6 +114,8 @@ public class CustomerRestController {
     @PostMapping("/deposit")
     public ResponseEntity<?> doDeposit(@Validated @RequestBody DepositDTO depositDTO, BindingResult bindingResult){
 
+        new DepositDTO().validate(depositDTO, bindingResult);
+
         if (bindingResult.hasFieldErrors()) {
             return appUtil.mapErrorToResponse(bindingResult);
         }
@@ -124,6 +133,8 @@ public class CustomerRestController {
 
     @PostMapping("/withdraw")
     public ResponseEntity<?> doWithdraw(@Validated @RequestBody WithdrawDTO withdrawDTO, BindingResult bindingResult){
+
+        new WithdrawDTO().validate(withdrawDTO, bindingResult);
 
         if (bindingResult.hasFieldErrors()) {
             return appUtil.mapErrorToResponse(bindingResult);
@@ -149,6 +160,52 @@ public class CustomerRestController {
         }else {
             throw new ResourceNotFoundException("Invalid customer ID");
 
+        }
+    }
+
+    @PostMapping("/transfer")
+    public ResponseEntity<?> doTransfer(@Validated @RequestBody TransferDTO transferDTO, BindingResult bindingResult){
+
+//        new TransferDTO().validate(transferDTO, bindingResult);
+
+        if (bindingResult.hasFieldErrors()) {
+            return appUtil.mapErrorToResponse(bindingResult);
+        }
+
+        Optional<Customer> senderOptional = customerService.findById(Long.valueOf(transferDTO.getSenderId()));
+
+        if (!senderOptional.isPresent()) {
+            throw new ResourceNotFoundException("Invalid sender ID");
+        }
+
+        Optional<Customer> recipientOptional = customerService.findById(Long.valueOf(transferDTO.getRecipientId()));
+
+        if (!recipientOptional.isPresent()) {
+            throw new ResourceNotFoundException("Invalid recipient ID");
+        }
+
+        BigDecimal currentBalance = senderOptional.get().getBalance();
+        BigDecimal transferAmout = new BigDecimal(Long.parseLong(transferDTO.getTransferAmount()));
+        Long fees = 10L;
+        BigDecimal fessAmount = transferAmout.multiply(BigDecimal.valueOf(fees)).divide(new BigDecimal(100L));
+        BigDecimal transactionAmout = transferAmout.add(fessAmount);
+
+        transferDTO.setFees(String.valueOf(fees));
+        transferDTO.setFeesAmount(String.valueOf(fessAmount));
+        transferDTO.setTransferAmount(String.valueOf(transferAmout));
+        transferDTO.setTransactionAmount(String.valueOf(transactionAmout));
+
+        if (transactionAmout.compareTo(currentBalance) > 0) {
+            throw new DataInputException("Sender's balance not enough");
+        }
+
+        try{
+            Map<String, CustomerDTO> result = customerService.doTransfer(transferDTO.toTransfer(senderOptional.get(), recipientOptional.get()));
+
+            return new ResponseEntity<>(result, HttpStatus.CREATED);
+
+        }catch (Exception ex) {
+            throw new DataInputException("Transfer fail");
         }
     }
 

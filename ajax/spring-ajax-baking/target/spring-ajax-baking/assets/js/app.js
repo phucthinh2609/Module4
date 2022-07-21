@@ -31,6 +31,26 @@ class App {
         }
     }
 
+    static IziToast = class {
+        static showSuccessAlert(title) {
+            iziToast.success({
+                title: 'SUCCESS',
+                position: 'topRight',
+                timeout: 2500,
+                message: title
+            })
+        }
+
+        static showErrorAlert(title){
+            iziToast.error({
+                title: 'ERROR',
+                position: 'topRight',
+                timeout: 2500,
+                message: title
+            })
+        }
+    }
+
     static formatNumber() {
         $(".num-space").number(true, 0, ',', ' ');
         $(".num-point").number(true, 0, ',', '.');
@@ -80,6 +100,18 @@ class Customer {
     }
 }
 
+class Sender extends Customer{
+    constructor() {
+        super();
+    }
+}
+
+class Recipient extends Customer{
+    constructor() {
+        super();
+    }
+}
+
 class Deposit {
     constructor(id, customerId, transactionAmount) {
         this.id = id;
@@ -92,6 +124,31 @@ class Withdraw {
     constructor(id, customerId, transactionAmount) {
         this.id = id;
         this.customerId = customerId;
+        this.transactionAmount = transactionAmount;
+    }
+}
+
+class Transfer {
+    constructor(id, senderId, recipientId, transferAmount) {
+        this.id = id;
+        this.senderId = senderId;
+        this.recipientId = recipientId;
+        this.transferAmount = transferAmount;
+    }
+}
+
+class TransferHistory {
+    constructor(id, senderId, senderName, recipientId, recipientName, createdOn, createdAt, transferAmount, fees, feesAmount, transactionAmount) {
+        this.id = id;
+        this.senderId = senderId;
+        this.senderName = senderName;
+        this.recipientId = recipientId;
+        this.recipientName = recipientName;
+        this.createdOn = createdOn;
+        this.createdAt = createdAt;
+        this.transferAmount = transferAmount;
+        this.fees = fees;
+        this.feesAmount = feesAmount;
         this.transactionAmount = transactionAmount;
     }
 }
