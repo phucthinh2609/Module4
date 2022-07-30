@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="dashboard:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d4e1ccf6-3caa-42d2-b901-597ddec21528" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../csmd4/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../csmd4/src/main/java/com/mvpt/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../csmd4/src/main/java/com/mvpt/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../csmd4/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../csmd4/src/main/webapp/WEB-INF/views/product/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/controller/ImportOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/controller/PurchaseOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/controller/rest/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/LocationRegion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Situation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/model/dto/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/security/CustomAccessDeniedHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/security/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/security/SecurityInit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/service/product/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/service/product/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/service/user/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mvpt/service/user/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/import-order/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/import-order/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/import-order/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/purchase-order/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/purchase-order/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/purchase-order/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/script/bootrstrap-touchspin-js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/bootstrap/v5.0.2.bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/sweetalert2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/bootstrap/v5.0.2.bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/sweetalert2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ajax/sqb-ajax-banking-location/src/main/java/com/cg/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ajax/sqb-ajax-banking-location/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/controller/rest/TransferRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/controller/rest/TransferRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/model/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/java/com/mvpt/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/webapp/WEB-INF/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/src/main/webapp/WEB-INF/views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/config/AppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/controller/rest/TransferRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/controller/rest/TransferRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/model/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/model/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/classes/com/mvpt/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/config/AppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/controller/rest/TransferRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/controller/rest/TransferRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/model/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/model/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/demo-login-cookie/target/spring-ajax-baking/WEB-INF/views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/src/main/java/com/mvpt/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/classes/com/mvpt/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/classes/com/mvpt/config/AppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ajax/spring-ajax-baking/target/spring-ajax-baking/WEB-INF/classes/com/mvpt/config/AppConfig.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CVUL69QuEdNLudfKMUrQfinDI8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/import-order" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/import-order" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/purchase-order" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/mvpt/service" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/mvpt" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/script" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/assets/js" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/cp" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mvpt.config" />
+      <recent name="com.mvpt.repository" />
+      <recent name="com.mvpt.service.jwt" />
+      <recent name="com.mvpt.model" />
+      <recent name="com.mvpt.controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.63" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.63" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="dashboard:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="60becaa6-9e3c-4f50-996e-c3237a9ba862" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55442" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="dashboard:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4e1ccf6-3caa-42d2-b901-597ddec21528" name="Changes" comment="" />
+      <created>1658887190317</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658887190317</updated>
+      <workItem from="1658887191524" duration="13592000" />
+      <workItem from="1658993361858" duration="13783000" />
+      <workItem from="1659084378832" duration="13715000" />
+      <workItem from="1659142113250" duration="18087000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

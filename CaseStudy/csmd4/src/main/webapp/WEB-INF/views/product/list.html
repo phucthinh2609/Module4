@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head>
+        <title>Products List</title>
+        <!-- Meta -->
+        <th:block th:replace="/head/meta :: meta"/>
+
+        <!-- App favicon -->
+        <th:block th:replace="/head/app-favicon :: app-favicon"/>
+
+        <!-- Bootstrap Css --> <!-- Icons Css --> <!-- App Css-->
+        <th:block th:replace="/head/main :: main"/>
+    </head>
+
+<body data-sidebar="dark">
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <th:block th:replace="/layout/page-topbar :: page-topbar"/>
+        <div class="vertical-menu">
+
+            <div data-simplebar="" class="h-100">
+
+                <!--- Sidemenu -->
+                <th:block th:replace="/layout/sidebar-menu :: sidebar-menu"/>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <%--start page title--%>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">List of Products</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Product</a></li>
+                                        <li class="breadcrumb-item active">List</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <%--end page title -->--%>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-2">
+                                        <div class="col-sm-4">
+                                            <div class="search-box mr-2 mb-2 d-inline-block">
+                                                <div class="position-relative">
+                                                    <form>
+                                                        <div class="row">
+
+                                                            <div class="col-sm-7">
+                                                                <input type="text" name="search" value=""
+                                                                       class="form-control mb-3" placeholder="Search...">
+                                                                <i class="bx bx-search-alt search-icon"></i>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <button type="submit"
+                                                                        class="btn btn-outline-primary mr-1 waves-effect waves-light">
+                                                                    Search
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="text-sm-right">
+                                                <button type="button"
+                                                        class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">
+                                                    <a href="products?action=create" class="text-white"><i
+                                                            class="mdi mdi-plus mr-1"></i> Add New Product</a></button>
+                                            </div>
+                                        </div><!-- end col-->
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="datatable" class="table table-centered table-nowrap table-hover"
+                                               role="grid" aria-describedby="datatable_info">
+                                            <%-- --%>
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th style="width: 20px;">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                   id="customCheck1">
+                                                            <label class="custom-control-label"
+                                                                   for="customCheck1">&nbsp;</label>
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Created At</th>
+                                                    <th scope="col">Created By</th>
+                                                    <th scope="col">Updated At</th>
+                                                    <th scope="col">Updated By</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width: 20px;">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                   id="customCheck2">
+                                                            <label class="custom-control-label"
+                                                                   for="customCheck1">&nbsp;</label>
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Created At</th>
+                                                    <th scope="col">Created By</th>
+                                                    <th scope="col">Updated At</th>
+                                                    <th scope="col">Updated By</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <th:block th:replace="/layout/footer :: footer"/>
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+
+    <!-- JAVASCRIPT -->
+    <th:block th:replace="/script/javascript :: javascript"/>
+
+    <!-- Required datatable js -->
+    <th:block th:replace="/script/required-datatable-js :: required-datatable-js"/>
+
+    <!-- Buttons examples -->
+    <th:block th:replace="/script/buttons-examples :: buttons-examples"/>
+
+    <!-- Responsive examples -->
+    <th:block th:replace="/script/responsive-examples :: responsive-examples"/>
+
+    <!-- Datatable init js -->
+    <th:block th:replace="/script/datatable-init-js :: datatable-init-js"/>
+
+    <!-- App js -->
+    <th:block th:replace="/script/app-js :: app-js"/>
+
+    <script>
+        $(document).ready(function () {
+            document.querySelector(".dataTables_filter").style.display = 'none';
+        });
+    </script>
+</body>
+</html>
